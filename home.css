@@ -1,0 +1,26 @@
+
+.container {
+    background-repeat: no-repeat;
+    background-image: url('assets/istockphoto-466336640-612x612.jpg');
+    background-size: 100%;
+    position: relative;
+    width: 100%; /* ou defina um tamanho fixo se quiser */
+    height: 100vh; /* ocupa a altura inteira da tela */
+    background-color: #aaf; /* só para você visualizar melhor o container */
+  }
+  
+  #butao {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #butao img {
+    width: 100px; /* ajuste o tamanho da imagem se quiser */
+  }
+  

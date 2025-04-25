@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Segoe UI', sans-serif;
-    background-image: url('istockphoto-466336640-612x612.jpg');
+    background-image: url('assets/istockphoto-466336640-612x612.jpg');
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,7 +42,7 @@ body {
   }
 
   .carta-frente {
-    background-image: url('Cópia\ de\ carta\ comum.jpg'); /* Lendária na frente agora */
+    background-image: url('assets/Cópia\ de\ carta\ comum.jpg'); /* Lendária na frente agora */
     background-size: cover;
     background-position: center;
     z-index: 2;
@@ -50,7 +50,7 @@ body {
 
   .carta-verso {
     background: linear-gradient(135deg, #222, #444);
-    background-image: url(verso\ 2.0.jpg);
+    background-image: url(assets/verso\ 2.0.jpg);
    background-size: cover;
    background-position: center;
     transform: rotateY(180deg);
