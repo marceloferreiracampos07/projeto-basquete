@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(blue, lightblue);
+    background: linear-gradient(red);
     color: azure;
     min-height: 100vh;
     display: flex;
@@ -8,7 +8,7 @@ body {
 }
 
 .barra-superior{
-    background: rgb(61, 187, 236);
+    background: #FF6F00;
     padding: 20px;
     text-align: center;
     font-size: 1.5rem;
@@ -30,7 +30,7 @@ body {
 .btn{
     background: none;
     border: none;
-    color: white;
+    color:black;
     padding: 10px;
     font-size:  1rem;
     transition: color 0.3s;
