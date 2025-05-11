@@ -16,6 +16,11 @@ body {
     border-bottom: 1px solid #333;
 }
 
+.Logo {
+    width: 200px;
+    height: auto;
+}
+
 .barra-inferior{
     background: linear-gradient(blue, lightblue);
     padding: 10px 0;

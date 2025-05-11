@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="colecao.css">
+</head>
+<body>
+    <div id="colecao-conteiner">
+        <h1>Minha Coleção</h1>
+        <div id="colecao">
+        </div>
+    </div>
+
+    <script>
+        function exibircartascolecao(){
+            const cartasColecaodiv = document.getElementById('colecao');
+            cartasColecaodiv.innerHTML = '';
+            
+            const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
+
+            cartasSalvas.forEach(carta => {
+                const img = document.createElement('img');
+                img.src = carta;
+                img.classList.add('colecao');
+                cartasColecaodiv.appendChild(img);
+            });
+        }
+
+        exibircartascolecao();
+    </script>
+</body>
+</html>

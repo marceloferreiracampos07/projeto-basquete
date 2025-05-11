@@ -1,0 +1,18 @@
+/* Estilos para o álbum */
+#album-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#cartas-album {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.carta-album {
+  width: 150px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

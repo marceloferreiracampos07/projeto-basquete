@@ -4,17 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="sorteio.css">
 </head>
 <body>
-  <h1>gacha pool</h1>
-  <img id="carta1" src="" alt="" width="300">
-  <img id="carta2" src="" alt="" width="300">
-  <img id="carta3" src="" alt="" width="300">
-  <img id="carta4" src="" alt="" width="300">
-  <img id="carta5" src="" alt="" width="300">
-  <br><br>
-  <button onclick="sortearPacote()">abrir pacote</button>
+
+<div id="sorteio-container">
+    <h1>Abrir pacote</h1>
+  <div id="cartas-container">
+    <img id="carta1" src="" alt="" width="300">
+    <img id="carta2" src="" alt="" width="300">
+    <img id="carta3" src="" alt="" width="300">
+    <img id="carta4" src="" alt="" width="300">
+    <img id="carta5" src="" alt="" width="300">
+  </div>
+  <div id="botao-container">
+    <button onclick="sortearPacote()">abrir pacote</button>
+    <button onclick = "exibirColecao()">Ver Coleção</button>
+  </div>
+</div>
 
   <script src="cards.js"></script>
+
+  <script>
+    const cartasSorteadas = [];
+
+
+      function sortearPacote() {
+      for (let i = 1; i <= 5; i++) {
+        const carta = sortearCarta();
+        document.getElementById(`carta${i}`).src = carta;
+        cartasSorteadas.push(carta);
+      }
+    }
+
+    function exibirColecao(){
+      localStorage.setItem('colecao', JSON.stringify(cartasSorteadas));
+      window.location.href = 'colecao.html';
+    }
+  </script>
 </body>
 </html>
