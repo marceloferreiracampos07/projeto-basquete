@@ -89,7 +89,7 @@ function sortearCarta() {
 }
 
 function sortearPacote() {
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 3; i++) {
     const carta = sortearCarta();
     document.getElementById(`carta${i}`).src = carta; 
   }

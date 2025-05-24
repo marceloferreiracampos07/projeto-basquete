@@ -13,22 +13,44 @@
         </div>
     </div>
 
+    <script src="cards.js"></script>
     <script>
-        function exibircartascolecao(){
-            const cartasColecaodiv = document.getElementById('colecao');
-            cartasColecaodiv.innerHTML = '';
-            
-            const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
+const todasCartas = [...lendario, ...epico, ...raro, ...comum];
+const placeholderImg = 'assets/diversos/carta vazia padrao.png';
 
-            cartasSalvas.forEach(carta => {
-                const img = document.createElement('img');
-                img.src = carta;
-                img.classList.add('colecao');
-                cartasColecaodiv.appendChild(img);
-            });
+function exibircartascolecao() {
+    const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
+    const contagemCartas = {};
+
+    cartasSalvas.forEach(carta => {
+        contagemCartas[carta] = (contagemCartas[carta] || 0) + 1;
+    });
+
+    const colecaoDiv = document.getElementById('colecao');
+    colecaoDiv.innerHTML = '';
+
+    todasCartas.forEach(cartaPath => {
+        const slot = document.createElement('div');
+        slot.classList.add('slot');
+
+        const img = document.createElement('img');
+        img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg;
+
+        slot.appendChild(img);
+
+        if (contagemCartas[cartaPath]) {
+            const insignia = document.createElement('span');
+            insignia.classList.add('quantidade-insigna');
+            insignia.textContent = `x${contagemCartas[cartaPath]}`;
+            slot.appendChild(insignia);
         }
 
-        exibircartascolecao();
+        colecaoDiv.appendChild(slot);
+    });
+}
+
+exibircartascolecao();
+
     </script>
 </body>
 </html>

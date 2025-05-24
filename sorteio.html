@@ -14,8 +14,6 @@
     <img id="carta1" src="" alt="" width="300">
     <img id="carta2" src="" alt="" width="300">
     <img id="carta3" src="" alt="" width="300">
-    <img id="carta4" src="" alt="" width="300">
-    <img id="carta5" src="" alt="" width="300">
   </div>
   <div id="botao-container">
     <button onclick="sortearPacote()">abrir pacote</button>
@@ -30,7 +28,7 @@
 
 
       function sortearPacote() {
-      for (let i = 1; i <= 5; i++) {
+      for (let i = 1; i <= 3; i++) {
         const carta = sortearCarta();
         document.getElementById(`carta${i}`).src = carta;
         cartasSorteadas.push(carta);
