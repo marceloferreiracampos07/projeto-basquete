@@ -94,3 +94,24 @@
 .slot:hover .quantidade-insigna {
     opacity: 1;
 }
+
+/* colecao.css */
+
+.back-arrow {
+    display: inline-block; /* Para permitir margin e padding */
+    margin: 20px; /* Espaço ao redor do botão */
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    transition: background-color 0.3s ease; /* Transição suave ao passar o mouse */
+}
+
+.back-arrow:hover {
+    background-color: #e0e0e0;
+}
