@@ -10,6 +10,13 @@
 
 <div id="sorteio-container">
     <h1>Abrir pacote</h1>
+
+    <div class="carrosel">
+      <div class="carrossel-track" id="carrossel-track">
+
+      </div>
+    </div>
+    
   <div id="cartas-container">
     <img id="carta1" src="" alt="" width="300">
     <img id="carta2" src="" alt="" width="300">
@@ -22,6 +29,22 @@
 </div>
 
   <script src="cards.js"></script>
+
+  <script>
+  
+  const todasImagens = [...lendario, ...epico, ...raro, ...comum];
+  const fotosCarrossel = [ ...todasImagens, ...todasImagens];
+
+  const track = document.getElementById("carrossel-track");
+
+  fotosCarrossel.forEach(src => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "carta";
+    track.appendChild(img)
+  });
+   
+  </script>
 
   <script>
     const cartasSorteadas = [];

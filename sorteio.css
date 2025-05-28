@@ -77,3 +77,35 @@ button:hover {
   }
 }
 
+.carrossel {
+
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.carrossel-track {
+
+  display: flex;
+  width: fit-content;
+  animation: scroll 15s linear infinite;
+}
+
+.carrossel-track img {
+
+  width: 600px;
+  height: 400px;
+  object-fit: cover;
+}
+
+@keyframes scroll {
+
+  0%{
+    transform: translateX(0);
+  }
+  100%{transform: translateX(-50%);
+  }
+}
