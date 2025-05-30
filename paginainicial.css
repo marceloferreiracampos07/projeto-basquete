@@ -14,7 +14,10 @@ background: #1D428A;
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    border-bottom: 3px solid #C8102E; 
+    border-bottom: 3px solid #C8102E ; 
+    border-top: 3px solid #C8102E;
+    border-left: 3px solid #C8102E;
+    border-right: 3px solid #C8102E;
     color: #F0F0F0; 
 }
 
@@ -95,7 +98,7 @@ background: #1D428A;
 
 .carrossel-track {
   display: flex;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 20s linear infinite;
 }
 
 .carrossel-track img {
