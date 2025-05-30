@@ -3,61 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minha Coleção</title>
     <link rel="stylesheet" href="colecao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
+    <link rel="stylesheet" href="carregamento.css"> </head>
 <body>
+    <div id="loader" class="loader-overlay">
+        <div class="bola-loader"></div>
+    </div>
+
     <div id="colecao-conteiner">
-        <a href="javascript:history.back()" class="back-arrow">
+        <a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event, 'javascript:history.back()')">
             <i class="bi bi-arrow-return-left">Voltar</i>
         </a> 
-
        
-    
         <h1>Minha Coleção</h1>
         <div id="colecao">
         </div>
     </div>
 
     <script src="cards.js"></script>
-    <script>
-const todasCartas = [...comum, ...raro, ...epico, ...lendario];
-const placeholderImg = 'assets/diversos/carta vazia padrao.png';
+    <script src="carregamento.js"></script> <script>
+        const todasCartas = [...comum, ...raro, ...epico, ...lendario];
+        const placeholderImg = 'assets/diversos/carta vazia padrao.png';
 
-function exibircartascolecao() {
-    const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
-    const contagemCartas = {};
+        function exibircartascolecao() {
+            const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
+            const contagemCartas = {};
 
-    cartasSalvas.forEach(carta => {
-        contagemCartas[carta] = (contagemCartas[carta] || 0) + 1;
-    });
+            cartasSalvas.forEach(carta => {
+                contagemCartas[carta] = (contagemCartas[carta] || 0) + 1;
+            });
 
-    const colecaoDiv = document.getElementById('colecao');
-    colecaoDiv.innerHTML = '';
+            const colecaoDiv = document.getElementById('colecao');
+            colecaoDiv.innerHTML = '';
 
-    todasCartas.forEach(cartaPath => {
-        const slot = document.createElement('div');
-        slot.classList.add('slot');
+            todasCartas.forEach(cartaPath => {
+                const slot = document.createElement('div');
+                slot.classList.add('slot');
 
-        const img = document.createElement('img');
-        img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg;
+                const img = document.createElement('img');
+                img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg;
 
-        slot.appendChild(img);
+                slot.appendChild(img);
 
-        if (contagemCartas[cartaPath]) {
-            const insignia = document.createElement('span');
-            insignia.classList.add('quantidade-insigna');
-            insignia.textContent = `x${contagemCartas[cartaPath]}`;
-            slot.appendChild(insignia);
+                if (contagemCartas[cartaPath]) {
+                    const insignia = document.createElement('span');
+                    insignia.classList.add('quantidade-insigna');
+                    insignia.textContent = `x${contagemCartas[cartaPath]}`;
+                    slot.appendChild(insignia);
+                }
+
+                colecaoDiv.appendChild(slot);
+            });
         }
 
-        colecaoDiv.appendChild(slot);
-    });
-}
+        exibircartascolecao();
 
-exibircartascolecao();
-
+        window.addEventListener('load', hideLoader);
+        document.addEventListener('DOMContentLoaded', hideLoader);
     </script>
 </body>
 </html>

@@ -6,10 +6,13 @@
   <title>Sorteio</title>
   <link rel="stylesheet" href="sorteio.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-</head>
+  <link rel="stylesheet" href="carregamento.css"> </head>
 <body>
+<div id="loader" class="loader-overlay">
+    <div class="bola-loader"></div>
+</div>
 
-<a href="javascript:history.back()" class="back-arrow">
+<a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event)">
   <i class="bi bi-arrow-return-left">Voltar</i>
 </a> 
 
@@ -22,18 +25,16 @@
     <img id="carta3" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
   </div>
   <div id="botao-container">
-    <button onclick="sortearPacote()">Abrir Pacote</button>
-    <button onclick="exibirColecao()">Ver Coleção</button>
+    <button onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
+    <button onclick="exibirColecaoAndShowLoader()">Ver Coleção</button>
   </div>
 </div>
 
 <script src="cards.js"></script>
-
-  <script>
+<script src="carregamento.js"></script> <script>
     const cartasSorteadas = [];
 
     function sortearPacote() {
-      
       cartasSorteadas.length = 0; 
 
       for (let i = 1; i <= 3; i++) {
@@ -43,16 +44,31 @@
       }
     }
 
-    function exibirColecao(){
-     
+    function sortearPacoteAndShowLoader() {
+        showLoader();
+        setTimeout(() => {
+            sortearPacote();
+            hideLoader();
+        }, 500); 
+    }
+
+    function exibirColecao() {
       const colecaoAtual = JSON.parse(localStorage.getItem('colecao')) || [];
       const novaColecao = [...colecaoAtual, ...cartasSorteadas];
       localStorage.setItem('colecao', JSON.stringify(novaColecao));
-
-    
-      window.location.href = 'colecao.html';
     }
-  </script>
+
+    function exibirColecaoAndShowLoader() {
+        exibirColecao(); 
+        showLoader(); 
+        setTimeout(() => {
+            window.location.href = 'colecao.html';
+        }, 300);
+    }
+
+    window.addEventListener('load', hideLoader);
+    document.addEventListener('DOMContentLoaded', hideLoader);
+</script>
 
 </body>
 </html>
