@@ -24,8 +24,15 @@
         </div>
     </div>
 
+    <div id="cardModal" class="modal">
+        <span class="closeBtn">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
     <script src="cards.js"></script>
-    <script src="carregamento.js"></script> <script>
+    <script src="carregamento.js"></script> 
+
+    <script>
         const todasCartas = [...comum, ...raro, ...epico, ...lendario];
         const placeholderImg = 'assets/diversos/carta vazia padrao.png';
 
@@ -47,6 +54,8 @@
                 const img = document.createElement('img');
                 img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg;
 
+                img.setAttribute('data-full-src', cartaPath);
+
                 slot.appendChild(img);
 
                 if (contagemCartas[cartaPath]) {
@@ -56,8 +65,34 @@
                     slot.appendChild(insignia);
                 }
 
+                slot.addEventListener('click', () => {
+                    openCardModal(img.src, img.getAttribute('data-full-src'));
+                });
+
                 colecaoDiv.appendChild(slot);
             });
+        }
+
+        const modal = document.getElementById("cardModal");
+        const modalImg = document.getElementById("img01");
+        const closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+        function openCardModal(imgScr, originalScr) {
+            if (imgScr.includes(placeholderImg)) {
+                return;
+            }
+            modal.style.display = "block";
+            modalImg.src = originalScr;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        modal.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
 
         exibircartascolecao();
