@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sorteio</title>
+  <link rel="icon" href="assets/iconTitle/favicon.jpg" type="image/png">
   <link rel="stylesheet" href="sorteio.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="carregamento.css">
 </head>
+
 <body>
-<div id="loader" class="loader-overlay">
+  <div id="loader" class="loader-overlay">
     <div class="bola-loader">
       <img src="assets/diversos/basketball-svgrepo-com.svg" alt="linhas" class="linhas-bola">
     </div>
-</div>
+  </div>
 
-<a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event)">
-  <i class="bi bi-arrow-return-left">Voltar</i>
-</a> 
+  <a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event)">
+    <i class="bi bi-arrow-return-left">Voltar</i>
+  </a>
 
-<div id="sorteio-container">
+  <div id="sorteio-container">
     <h1>Abrir pacote</h1>
- 
-  <div id="cartas-container">
-    <img id="carta1" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
-    <img id="carta2" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
-    <img id="carta3" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
-  </div>
-  <div id="botao-container">
-    <button onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
-    <button onclick="exibirColecaoAndShowLoader()">Ver Coleção</button>
-  </div>
-</div>
 
-<script src="cards.js"></script>
-<script src="carregamento.js"></script>
-<script>
+    <div id="cartas-container">
+      <img id="carta1" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
+      <img id="carta2" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
+      <img id="carta3" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
+    </div>
+    <div id="botao-container">
+      <button onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
+      <button onclick="exibirColecaoAndShowLoader()">Ver Coleção</button>
+    </div>
+  </div>
+
+  <script src="cards.js"></script>
+  <script src="carregamento.js"></script>
+  <script>
     const cartasSorteadas = [];
     function sortearPacote() {
-      cartasSorteadas.length = 0; 
+      cartasSorteadas.length = 0;
 
       for (let i = 1; i <= 3; i++) {
-        const carta = sortearCarta(); 
+        const carta = sortearCarta();
         document.getElementById(`carta${i}`).src = carta;
         cartasSorteadas.push(carta);
       }
-      
+
       const colecaoAtual = JSON.parse(localStorage.getItem('colecao')) || [];
       const novaColecao = [...colecaoAtual, ...cartasSorteadas];
       localStorage.setItem('colecao', JSON.stringify(novaColecao));
@@ -53,29 +56,30 @@
     }
 
     function sortearPacoteAndShowLoader() {
-        showLoader();
-        setTimeout(() => {
-            sortearPacote();
-            hideLoader();
-        }, 500); 
+      showLoader();
+      setTimeout(() => {
+        sortearPacote();
+        hideLoader();
+      }, 500);
     }
 
- 
+
     function exibirColecao() {
       console.log("Preparando para navegar para a coleção. O salvamento já foi feito.");
-      
+
     }
 
     function exibirColecaoAndShowLoader() {
-        showLoader();
-        setTimeout(() => {
-           
-            window.location.href = 'colecao.html';
-        }, 300);
+      showLoader();
+      setTimeout(() => {
+
+        window.location.href = 'colecao.html';
+      }, 300);
     }
 
     window.addEventListener('load', hideLoader);
     document.addEventListener('DOMContentLoaded', hideLoader);
-</script>
+  </script>
 </body>
+
 </html>
