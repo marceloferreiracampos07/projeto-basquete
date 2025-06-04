@@ -35,8 +35,7 @@
     z-index: 10000;
 }
 
-.bola-loader .linhas-bola{
-    position: absolute;
+.linhas-bola{
     width: 100%;
     height: 100%;
     object-fit: contain;

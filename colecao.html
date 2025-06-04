@@ -63,7 +63,7 @@
 
                 slot.appendChild(img);
 
-                if (contagemCartas[cartaPath]) {
+                if (contagemCartas[cartaPath] >=2) {
                     const insignia = document.createElement('span');
                     insignia.classList.add('quantidade-insigna');
                     insignia.textContent = `x${contagemCartas[cartaPath]}`;
