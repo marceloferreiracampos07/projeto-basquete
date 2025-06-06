@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(#2A628F, #0A2342);
+    background: #f5f5f5;
     color: #F8F8F8;
     min-height: 100vh;
     display: flex;
@@ -9,15 +9,12 @@ body {
 }
 
 .barra-superior{
-background: #0A2342;
+background: #d9d9d9;
     padding: 20px;
     text-align: center;
     font-size: 1.8rem;
     font-weight: bold;
-    border-bottom: 3px solid #FF8C00 ; 
-    border-top: 3px solid #FF8C00;
-    border-left: 3px solid #FF8C00;
-    border-right: 3px solid #FF8C00;
+    border-radius: 5px ;
     color: #F8F8F8; 
 }
 
@@ -26,7 +23,7 @@ background: #0A2342;
    display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #2A628F; 
+    background-color: linear-gradient(to right, #f6a570, #4fc3a1); 
     color: #F8F8F8; 
     font-size: 1.1rem;
     font-weight: bold;
@@ -38,10 +35,10 @@ background: #0A2342;
     cursor: pointer;
     margin: 5px
 }
-.btn:hover,
+
 .btn:focus {
   transform: scale(1.08);
-    background: rgba(255, 140, 0, 0.4); 
+    background:#4fc3a1;
     outline: none;
     color: #333333;
 }
@@ -55,7 +52,7 @@ background: #0A2342;
  display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #FF8C00; 
+    background-color:#f6a570; 
     color: #333333; 
     font-size: 1.1rem;
     font-weight: bold;
@@ -71,7 +68,7 @@ background: #0A2342;
 }
 
 .abrir-pack:hover {
-    background-color: #FFB040; /* Um tom mais claro de laranja no hover */
+    background:linear-gradient(to right,#f47c3c, #f6a570, #4fc3a1, #2f9e8d); /* salvar paleta hover usar em tudo */
     transform: translateY(-3px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
