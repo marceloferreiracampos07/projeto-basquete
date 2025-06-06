@@ -6,6 +6,7 @@ body {
     flex-direction: column;
     position: relative;
     font-family: sans-serif;
+    padding-top: 80px;
 }
 
 .barra-superior{
@@ -16,6 +17,7 @@ background: #d9d9d9;
     font-weight: bold;
     border-radius: 5px ;
     color: #F8F8F8; 
+    width: 90%;
 }
 
 
@@ -62,8 +64,7 @@ background: #d9d9d9;
     text-decoration: none;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     cursor: pointer;
-    border: 2px solid #0A2342; 
-    margin-top: 50px;
+    border: 2px solid #0A2342;
     margin-bottom: 20px;
 }
 
@@ -80,9 +81,9 @@ background: #d9d9d9;
 
 .carrossel-track {
   display: flex;
-  animation: scroll 20s linear infinite;
-  white-space: nowrap;
+  animation: scroll 80s linear infinite;
   padding: 10px 0;
+  width: max-content;
 }
 
 .carrossel-track img {
@@ -102,7 +103,90 @@ background: #d9d9d9;
   }
 }
 
-.bi{
-  margin-right:  8px;
-  font-size: 1.4rem;
+.header{
+  width: 100%;
+  background-color: #0A2342;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-logo{
+  display: flex;
+  align-items: center;
+  height: 100px;
+  text-decoration: none;
+}
+
+.header-logo img{
+  height: 100%;
+  width: auto;
+}
+
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.nav-toggle{
+  display: block;
+  font-size: 2rem;
+  color: #F8F8F8;
+  cursor: pointer;
+  padding: 5px;
+  margin-left: 15px;
+}
+
+.nav-menu{
+  list-style:none;
+  margin: 0;
+  padding: 0;
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: auto;
+  background-color: #0A2342;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 10px 0;
+}
+
+.nav-menu.show-menu{
+  display: flex;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.nav-menu li{
+  margin:10px 20px;
+  width: fit-content;
+}
+
+.nav-menu a{
+  color: #f8f8f8;
+  text-decoration: none;
+  font-size: 1.1;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-menu a:hover{
+  color: #ff8c00;
+}
+
+.centra-superior{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
 }
