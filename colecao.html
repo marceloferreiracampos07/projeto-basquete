@@ -18,6 +18,21 @@
         </div>
     </div>
 
+    <header class="header">
+        <nav class="navbar">
+            <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
+                <img src="assets/iconTitle/logo.png" alt="logo">
+            </a>
+            <div class="nav-toggle" id="navToggle">
+               <i class="bi bi-list"></i> 
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
+                <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div id="colecao-conteiner">
         <a href="javascript:history.back()" class="back-arrow"
             onclick="showLoaderAndGoBack(event, 'javascript:history.back()')">
@@ -104,6 +119,14 @@
 
         window.addEventListener('load', hideLoader);
         document.addEventListener('DOMContentLoaded', hideLoader);
+
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show-menu');
+        });
+
     </script>
 </body>
 

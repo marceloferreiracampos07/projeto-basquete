@@ -55,23 +55,20 @@ background: #d9d9d9;
     align-items: center;
     justify-content: center;
     background-color:#f6a570; 
-    color: #333333; 
     font-size: 1.1rem;
     font-weight: bold;
     padding: 10px 15px;
     border-radius: 12px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     text-decoration: none;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    border: 2px solid #0A2342;
     margin-bottom: 20px;
 }
 
 .abrir-pack:hover {
     background:linear-gradient(to right,#f47c3c, #f6a570, #4fc3a1, #2f9e8d); /* salvar paleta hover usar em tudo */
     transform: translateY(-3px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .carrossel {
@@ -138,8 +135,8 @@ background: #d9d9d9;
   font-size: 2rem;
   color: #F8F8F8;
   cursor: pointer;
-  padding: 5px;
-  margin-left: 15px;
+  padding: 10px;
+  margin-left: 30px;
 }
 
 .nav-menu{
