@@ -12,97 +12,104 @@
 </head>
 
 <body>
+  <!-- Tela de carregamento com animação de bola de basquete -->
   <div id="loader" class="loader-overlay">
     <div class="bola-loader">
-      <img src="assets/diversos/basketball-svgrepo-com.svg" alt="linhas" class="linhas-bola">
+      <img src="assets/diversos/basketball-svgrepo-com.svg" alt="Carregando..." class="linhas-bola">
     </div>
   </div>
 
+  <!-- Cabeçalho com menu de navegação -->
   <header class="header">
-        <nav class="navbar">
-            <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
-                <img src="assets/iconTitle/logo.png" alt="logo">
-            </a>
-            <div class="nav-toggle" id="navToggle">
-               <i class="bi bi-list"></i> 
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
-                <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+      <!-- Logo que redireciona para página inicial -->
+      <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
+        <img src="assets/iconTitle/logo.png" alt="Logo">
+      </a>
+      <!-- Botão de menu para mobile -->
+      <div class="nav-toggle" id="navToggle">
+        <i class="bi bi-list"></i> 
+      </div>
+      <!-- Itens do menu -->
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
+        <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <!-- Botão Voltar -->
   <a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event)">
     <i class="bi bi-arrow-return-left">Voltar</i>
   </a>
 
+  <!-- Área principal de sorteio -->
   <div id="sorteio-container">
     <h1>Abrir pacote</h1>
 
+    <!-- Container das cartas (3 slots) -->
     <div id="cartas-container">
-      <img id="carta1" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
-      <img id="carta2" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
-      <img id="carta3" src="assets/diversos/carta vazia padrao.png" alt="Carta Placeholder">
+      <img id="carta1" src="assets/diversos/carta vazia padrao.png" alt="Carta 1">
+      <img id="carta2" src="assets/diversos/carta vazia padrao.png" alt="Carta 2">
+      <img id="carta3" src="assets/diversos/carta vazia padrao.png" alt="Carta 3">
     </div>
+    
+    <!-- Botões de ação -->
     <div id="botao-container">
       <button onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
       <button onclick="exibirColecaoAndShowLoader()">Ver Coleção</button>
     </div>
   </div>
 
-  <script src="cards.js"></script>
-  <script src="carregamento.js"></script>
+  <!-- Scripts -->
+  <script src="cards.js"></script> <!-- Contém os dados das cartas -->
+  <script src="carregamento.js"></script> <!-- Controla o loader -->
+
   <script>
+    // Array para armazenar cartas do sorteio atual
     const cartasSorteadas = [];
+    
+    // Sorteia 3 cartas e salva na coleção
     function sortearPacote() {
-      cartasSorteadas.length = 0;
+      cartasSorteadas.length = 0; // Limpa sorteio anterior
 
       for (let i = 1; i <= 3; i++) {
-        const carta = sortearCarta();
-        document.getElementById(`carta${i}`).src = carta;
-        cartasSorteadas.push(carta);
+        const carta = sortearCarta(); // Sorteia uma carta
+        document.getElementById(`carta${i}`).src = carta; // Atualiza imagem
+        cartasSorteadas.push(carta); // Armazena no array
       }
 
+      // Atualiza localStorage com novas cartas
       const colecaoAtual = JSON.parse(localStorage.getItem('colecao')) || [];
-      const novaColecao = [...colecaoAtual, ...cartasSorteadas];
-      localStorage.setItem('colecao', JSON.stringify(novaColecao));
-      console.log("Cartas sorteadas e salvas:", cartasSorteadas);
+      localStorage.setItem('colecao', JSON.stringify([...colecaoAtual, ...cartasSorteadas]));
     }
 
+    // Versão com loader do sorteio
     function sortearPacoteAndShowLoader() {
       showLoader();
       setTimeout(() => {
         sortearPacote();
         hideLoader();
-      }, 500);
+      }, 500); // Delay para efeito visual
     }
 
-
-    function exibirColecao() {
-      console.log("Preparando para navegar para a coleção. O salvamento já foi feito.");
-
-    }
-
+    // Navega para coleção com loader
     function exibirColecaoAndShowLoader() {
       showLoader();
       setTimeout(() => {
-
         window.location.href = 'colecao.html';
       }, 300);
     }
 
+    // Esconde loader quando página carrega
     window.addEventListener('load', hideLoader);
     document.addEventListener('DOMContentLoaded', hideLoader);
 
+    // Controle do menu mobile
     const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show-menu');
-        });
-
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('show-menu');
+    });
   </script>
 </body>
-
-</html>

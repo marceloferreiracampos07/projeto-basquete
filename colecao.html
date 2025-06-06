@@ -1,133 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
+    <!-- Configurações básicas do documento e links para recursos externos -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minha Coleção</title>
     <link rel="icon" href="assets/iconTitle/favicon.png" type="image/png">
+    <!-- Links para folhas de estilo -->
     <link rel="stylesheet" href="colecao.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="carregamento.css">
 </head>
 
 <body>
+    <!-- Tela de carregamento animada -->
     <div id="loader" class="loader-overlay">
         <div class="bola-loader">
             <img src="assets/diversos/basketball-svgrepo-com.svg" alt="linhas" class="linhas-bola">
         </div>
     </div>
-
-    <header class="header">
-        <nav class="navbar">
-            <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
-                <img src="assets/iconTitle/logo.png" alt="logo">
-            </a>
-            <div class="nav-toggle" id="navToggle">
-               <i class="bi bi-list"></i> 
-            </div>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
-                <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div id="colecao-conteiner">
-        <a href="javascript:history.back()" class="back-arrow"
-            onclick="showLoaderAndGoBack(event, 'javascript:history.back()')">
-            <i class="bi bi-arrow-return-left">Voltar</i>
+<header class="header">
+    <nav class="navbar">
+        <!-- Logo clicável (volta para home) com loader -->
+        <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
+            <img src="assets/iconTitle/logo.png" alt="logo">
         </a>
-
-        <h1>Minha Coleção</h1>
-        <div id="colecao">
+        
+        <!-- Botão para menu mobile (hamburguer) -->
+        <div class="nav-toggle" id="navToggle">
+            <i class="bi bi-list"></i> 
         </div>
-    </div>
+        
+        <!-- Menu principal -->
+        <ul class="nav-menu" id="navMenu">
+            <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
+            <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <div id="cardModal" class="modal">
-        <span class="closeBtn">&times;</span>
-        <img class="modal-content" id="img01">
-    </div>
+<!-- CONTEÚDO PRINCIPAL -->
+<div id="colecao-conteiner">
+    <!-- Botão Voltar com loader -->
+    <a href="javascript:history.back()" class="back-arrow"
+        onclick="showLoaderAndGoBack(event, 'javascript:history.back()')">
+        <i class="bi bi-arrow-return-left">Voltar</i>
+    </a>
 
-    <script src="cards.js"></script>
-    <script src="carregamento.js"></script>
+    <!-- Título da página -->
+    <h1>Minha Coleção</h1>
+    
+    <!-- Container onde as cartas serão renderizadas -->
+    <div id="colecao"></div>
+</div>
 
-    <script>
-        const todasCartas = [...comum, ...raro, ...epico, ...lendario];
-        const placeholderImg = 'assets/diversos/carta vazia padrao.png';
+<!-- MODAL para visualização ampliada das cartas -->
+<div id="cardModal" class="modal">
+    <!-- Botão de fechar (X) -->
+    <span class="closeBtn">&times;</span>
+    <!-- Imagem que será exibida no modal -->
+    <img class="modal-content" id="img01">
+</div>
 
-        function exibircartascolecao() {
-            const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || [];
-            const contagemCartas = {};
+<!-- SCRIPTS -->
+<script src="cards.js"></script> <!-- Contém os arrays de cartas -->
+<script src="carregamento.js"></script> <!-- Gerencia o loader -->
 
-            cartasSalvas.forEach(carta => {
-                contagemCartas[carta] = (contagemCartas[carta] || 0) + 1;
-            });
+<script>
+    // Junta todas as cartas em um único array
+    const todasCartas = [...comum, ...raro, ...epico, ...lendario];
+    const placeholderImg = 'assets/diversos/carta vazia padrao.png'; // Imagem padrão para cartas não obtidas
 
-            const colecaoDiv = document.getElementById('colecao');
-            colecaoDiv.innerHTML = '';
+    // Renderiza a coleção de cartas
+    function exibircartascolecao() {
+        const cartasSalvas = JSON.parse(localStorage.getItem('colecao')) || []; // Busca cartas salvas
+        const contagemCartas = {}; // Contador de cartas repetidas
 
-            todasCartas.forEach(cartaPath => {
-                const slot = document.createElement('div');
-                slot.classList.add('slot');
-
-                const img = document.createElement('img');
-                img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg;
-
-                img.setAttribute('data-full-src', cartaPath);
-
-                slot.appendChild(img);
-
-                if (contagemCartas[cartaPath] >=2) {
-                    const insignia = document.createElement('span');
-                    insignia.classList.add('quantidade-insigna');
-                    insignia.textContent = `x${contagemCartas[cartaPath]}`;
-                    slot.appendChild(insignia);
-                }
-
-                slot.addEventListener('click', () => {
-                    openCardModal(img.src, img.getAttribute('data-full-src'));
-                });
-
-                colecaoDiv.appendChild(slot);
-            });
-        }
-
-        const modal = document.getElementById("cardModal");
-        const modalImg = document.getElementById("img01");
-        const closeBtn = document.getElementsByClassName("closeBtn")[0];
-
-        function openCardModal(imgScr, originalScr) {
-            if (imgScr.includes(placeholderImg)) {
-                return;
-            }
-            modal.style.display = "block";
-            modalImg.src = originalScr;
-        }
-
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        modal.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-
-        exibircartascolecao();
-
-        window.addEventListener('load', hideLoader);
-        document.addEventListener('DOMContentLoaded', hideLoader);
-
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('show-menu');
+        // Conta quantas cópias de cada carta existem
+        cartasSalvas.forEach(carta => {
+            contagemCartas[carta] = (contagemCartas[carta] || 0) + 1;
         });
 
-    </script>
-</body>
+        const colecaoDiv = document.getElementById('colecao');
+        colecaoDiv.innerHTML = ''; // Limpa o container
 
-</html>
+        // Cria um slot para cada carta possível
+        todasCartas.forEach(cartaPath => {
+            const slot = document.createElement('div');
+            slot.classList.add('slot');
+
+            const img = document.createElement('img');
+            img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg; // Usa imagem real ou placeholder
+            img.setAttribute('data-full-src', cartaPath); // Armazena caminho original
+
+            slot.appendChild(img);
+
+            // Mostra badge se tiver 2+ cópias
+            if (contagemCartas[cartaPath] >= 2) {
+                const insignia = document.createElement('span');
+                insignia.classList.add('quantidade-insigna');
+                insignia.textContent = `x${contagemCartas[cartaPath]}`;
+                slot.appendChild(insignia);
+            }
+
+            // Abre modal ao clicar (exceto placeholders)
+            slot.addEventListener('click', () => {
+                if (!img.src.includes(placeholderImg)) {
+                    openCardModal(img.src, img.getAttribute('data-full-src'));
+                }
+            });
+
+            colecaoDiv.appendChild(slot);
+        });
+    }
+
+    // Controle do Modal
+    const modal = document.getElementById("cardModal");
+    const modalImg = document.getElementById("img01");
+    const closeBtn = document.getElementsByClassName("closeBtn")[0];
+
+    function openCardModal(imgSrc, fullSrc){
+        modal.style.display = "block";
+        modalImg.src = fullSrc;
+    }
+
+    // Fecha modal ao clicar no X ou fora da imagem
+    closeBtn.onclick = function() { modal.style.display = "none"; }
+    modal.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Inicialização
+    exibircartascolecao(); // Renderiza as cartas
+    window.addEventListener('load', hideLoader); // Esconde loader ao carregar
+
+    // Controle do menu mobile
+    document.getElementById('navToggle').addEventListener('click', () => {
+        document.getElementById('navMenu').classList.toggle('show-menu');
+    });
+</script>

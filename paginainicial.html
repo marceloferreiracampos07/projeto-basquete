@@ -12,20 +12,27 @@
 </head>
 
 <body>
+    <!-- Loader de carregamento (animação de bola de basquete) -->
     <div id="loader" class="loader-overlay">
         <div class="bola-loader">
-            <img src="assets/diversos/basketball-svgrepo-com.svg" alt="linhas" class="linhas-bola">
+            <img src="assets/diversos/basketball-svgrepo-com.svg" alt="Carregando..." class="linhas-bola">
         </div>
     </div>
 
+    <!-- Cabeçalho com menu de navegação -->
     <header class="header">
         <nav class="navbar">
+            <!-- Logo clicável - volta para home com transição suave -->
             <a href="paginainicial.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'paginainicial.html')">
-                <img src="assets/iconTitle/logo.png" alt="logo">
+                <img src="assets/iconTitle/logo.png" alt="Logo do site">
             </a>
+            
+            <!-- Botão de menu para mobile -->
             <div class="nav-toggle" id="navToggle">
                <i class="bi bi-list"></i> 
             </div>
+            
+            <!-- Itens do menu principal -->
             <ul class="nav-menu" id="navMenu">
                 <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
                 <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
@@ -33,31 +40,37 @@
         </nav>
     </header>
 
-<div class="centra-superior">
-    <div class="barra-superior">
-        <div class="carrossel">
-            <div class="carrossel-track" id="carrossel-track-inicial">
+    <!-- Área principal do conteúdo -->
+    <div class="centra-superior">
+        <!-- Carrossel de cartas (rolagem automática) -->
+        <div class="barra-superior">
+            <div class="carrossel">
+                <div class="carrossel-track" id="carrossel-track-inicial">
+                    <!-- Imagens serão inseridas via JavaScript -->
+                </div>
             </div>
         </div>
+       
+        <!-- Botão principal de ação -->
+        <div class="centralizar-btn">
+            <a href="sorteio.html" class="btn abrir-pack" role="button"
+                onclick="showLoaderOnNavigate(event, 'sorteio.html')">
+                Abrir Pacote
+            </a>
+        </div>
     </div>
-   
-    <div class="centralizar-btn">
-        <a href="sorteio.html" class="btn abrir-pack" role="button"
-            onclick="showLoaderOnNavigate(event, 'sorteio.html')">
-            Abrir Pacote
-        </a>
-    </div>
-</div>
 
+    <!-- Scripts -->
+    <script src="cards.js"></script> <!-- Contém os arrays de cartas (comum, raro, épico, lendário) -->
+    <script src="carregamento.js"></script> <!-- Controla a exibição do loader -->
 
-    <script src="cards.js"></script>
-    <script src="carregamento.js"></script>
     <script>
+        // Prepara todas as imagens para o carrossel (duplicadas para efeito contínuo)
         const todasImagens = [...lendario, ...epico, ...raro, ...comum];
         const fotosCarrossel = [...todasImagens, ...todasImagens];
 
+        // Insere as imagens no carrossel
         const trackInicial = document.getElementById("carrossel-track-inicial");
-
         fotosCarrossel.forEach(src => {
             const img = document.createElement("img");
             img.src = src;
@@ -65,17 +78,15 @@
             trackInicial.appendChild(img);
         });
 
+        // Esconde o loader quando a página carrega
         window.addEventListener('load', hideLoader);
         document.addEventListener('DOMContentLoaded', hideLoader);
 
+        // Controle do menu mobile (toggle)
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
-
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
         });
-
     </script>
 </body>
-
-</html>
