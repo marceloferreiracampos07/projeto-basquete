@@ -1,0 +1,60 @@
+.login-logo {
+    /* Ajuste este valor para o tamanho que você quer que a logo tenha */
+    max-width: 120px; /* Por exemplo, de 180px para 120px ou até menos */
+
+    height: auto;     /* MANTENHA ESTA PROPRIEDADE para evitar distorção */
+
+    margin-top: 0;
+    margin-bottom: 30px;
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-right: 0;
+     align-self: flex-start;
+      margin-left: -30px; /* Experimente -30px. Se seu padding do .login-container for diferente, ajuste. */
+    margin-right: 0; 
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    margin: 0;
+}
+.login-container {
+     display: flex;
+    flex-direction: column; /* Importante para empilhar os itens */
+    align-items: center; 
+    background-color: #F0F0F0;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px; 
+    text-align: center;
+}
+.input-group {
+    margin-bottom: 20px;
+    text-align: center; 
+}
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: bold;
+}
+button[type="submit"] {
+    background-color: #f47c3c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease; 
+}
+button[type="submit"]:hover {
+    background:linear-gradient(to right,#f47c3c, #f6a570, #4fc3a1, #2f9e8d);
+}
