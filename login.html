@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina de login</title>
+     <link rel="icon" href="assets/iconTitle/favicon.png" type="image/png">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    
+    <div class="login-container">
+     <img src="assets/iconTitle/logo.png" alt="logo" class="login-logo">
+     <h1>LOGIN</h1>
+        <form id="login-form">
+            <div class="input-group">
+                <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" placeholder="digite seu E-mail" required>
+            </div>
+            <div class="input-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" placeholder="digite sua senha" required>
+            </div>
+            <button type="submit">ENTRAR</button>
+        </form>
+    </div>
+    <script>
+        
+document.getElementById('login-form').addEventListener('submit', function(event) {
+ 
+    event.preventDefault();
+
+    const EmailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('senha');
+
+    const Email= EmailInput.value;
+    const password = passwordInput.value;
+
+    
+    if (Email=== '' || password === '') {
+        alert('Por favor, preencha todos os campos!');
+        return; 
+    }
+    if (Email === 'fran865@gmail.com' && password === 'marcelo123') {
+        alert('Login bem-sucedido! Bem-vindo(a), ' + Email + '!');
+        window.location.href = 'paginainicial.html';
+    } else {
+        alert('Usuário ou senha incorretos.');
+    }
+});
+    </script>
+</body>
+</html>
