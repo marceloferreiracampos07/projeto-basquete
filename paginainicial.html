@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="paginainicial.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="carregamento.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -34,8 +35,11 @@
             
             <!-- Itens do menu principal -->
             <ul class="nav-menu" id="navMenu">
+                  <li><a href="#">Olá usuário087  <span id="navUserName"></span> <img id="navUserPhoto" src="assets/diversos/foto em branco.jpg" alt="Foto" class="nav-profile-photo"></a></li>
                 <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
                 <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+                <li><a href="#" onclick="signOutAndRedirect()">Sair</a></li>
+              
             </ul>
         </nav>
     </header>
@@ -88,6 +92,25 @@
         navToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show-menu');
         });
+        function signOutAndRedirect() {
+    // 1. Chamar a função de logout do Google Identity Services
+    // Isso é importante para que o Google não faça login automático na próxima visita
+    google.accounts.id.disableAutoSelect();
+
+    // 2. Limpar quaisquer dados de sessão que você armazenou no localStorage
+    // Isso remove as informações do usuário do navegador para seu aplicativo.
+    localStorage.removeItem('google_id_token');
+    localStorage.removeItem('user_name');
+    localStorage.removeItem('user_email');
+    localStorage.removeItem('user_photo');
+
+    console.log("Usuário deslogado do Google e dados locais removidos.");
+
+    // 3. Redirecionar o usuário para a página de login
+    // ESTA É A LINHA PRINCIPAL PARA O REDIRECIONAMENTO
+    window.location.href = 'login.html'; // Garante que o navegador vá para 'login.html'
+}
+
     </script>
     
 </body>
