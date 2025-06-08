@@ -187,3 +187,18 @@ background: #d9d9d9;
   width: 100%;
   gap: 20px;
 }
+.nav-profile-photo {
+    width: 30px; /* Define a largura da imagem */
+    height: 30px; /* Define a altura da imagem (igual à largura para um círculo perfeito) */
+    border-radius: 50%; /* Faz a imagem ficar redonda */
+    object-fit: cover; /* Garante que a imagem preencha a área sem distorcer, cortando o excesso */
+    margin-left: 5px; /* Adiciona um pequeno espaçamento à esquerda do nome, se houver */
+    vertical-align: middle; /* Alinha a imagem verticalmente com o texto "Olá, [Nome]" */
+    border: 1px solid #eee; /* Opcional: Adiciona uma borda fina para destacar */
+}
+@media (max-width: 768px) { /* Ajuste o breakpoint conforme o seu CSS responsivo */
+    .nav-profile-photo {
+        width: 40px; /* Talvez um pouco maior no menu mobile */
+        height: 40px;
+    }
+}
