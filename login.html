@@ -3,19 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pagina de login</title>
-     <link rel="icon" href="assets/iconTitle/favicon.png" type="image/png">
+    <title>Página de Login</title>
+    <link rel="icon" href="assets/iconTitle/favicon.png" type="image/png">
     <link rel="stylesheet" href="login.css">
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <style>
+        /* Adicione ou ajuste estes estilos no seu `login.css` ou aqui, se preferir */
+        /* Eles ajudam a posicionar o botão do Google e o separador */
+        .separator {
+            margin: 25px 0; /* Espaçamento acima e abaixo do "ou" */
+            position: relative;
+            text-align: center;
+            color: #888;
+        }
+        .separator::before,
+        .separator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%; /* Largura das linhas laterais */
+            height: 1px;
+            background: #eee;
+        }
+        .separator::before { left: 0; }
+        .separator::after { right: 0; }
+        .separator span {
+            background: white; /* Cor de fundo para o texto "ou" */
+            padding: 0 10px;
+        }
+        /* Estilos para o perfil do usuário após o login do Google */
+        #userProfile {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        #userProfile img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+        #userProfile p {
+            margin: 8px 0;
+            color: #444;
+        }
+        #userProfile .logout-button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 15px;
+        }
+        #userProfile .logout-button:hover {
+            background-color: #c82333;
+        }
+    </style>
 </head>
 <body>
-    
     <div class="login-container">
-     <img src="assets/iconTitle/logo.png" alt="logo" class="login-logo">
-     <h1>LOGIN</h1>
+        <img src="assets/iconTitle/logo.png" alt="logo" class="login-logo">
+        <h1>LOGIN</h1>
+
         <form id="login-form">
             <div class="input-group">
                 <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" placeholder="digite seu E-mail" required>
+                <input type="email" id="email" name="email" placeholder="digite seu E-mail" required>
             </div>
             <div class="input-group">
                 <label for="senha">Senha:</label>
@@ -23,31 +84,114 @@
             </div>
             <button type="submit">ENTRAR</button>
         </form>
+
+        <div class="separator"><span>ou</span></div>
+
+        <div id="g_id_onload"
+             data-client_id="399220494255-2d5vu09rm739ms8k0g327jqsumn6cdln.apps.googleusercontent.com" data-callback="handleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large"
+             data-theme="outline"
+             data-text="sign_in_with"
+             data-shape="rectangular"
+             data-logo_alignment="left">
+        </div>
+
+        <div id="userProfile" style="display: none;">
+            <img id="userPhoto" src="" alt="Foto do perfil">
+            <p>Olá, <span id="userName"></span>!</p>
+            <p>E-mail: <span id="userEmail"></span></p>
+            <button class="logout-button" onclick="signOut()">Sair do Google</button>
+        </div>
+
     </div>
+
     <script>
-        
-document.getElementById('login-form').addEventListener('submit', function(event) {
- 
-    event.preventDefault();
+        // Seu script de login tradicional já existente
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
 
-    const EmailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('senha');
+            const EmailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('senha');
 
-    const Email= EmailInput.value;
-    const password = passwordInput.value;
+            const Email = EmailInput.value;
+            const password = passwordInput.value;
 
-    
-    if (Email=== '' || password === '') {
-        alert('Por favor, preencha todos os campos!');
-        return; 
-    }
-    if (Email === 'fran865@gmail.com' && password === 'marcelo123') {
-        alert('Login bem-sucedido! Bem-vindo(a), ' + Email + '!');
-        window.location.href = 'paginainicial.html';
-    } else {
-        alert('Usuário ou senha incorretos.');
-    }
-});
+            if (Email === '' || password === '') {
+                alert('Por favor, preencha todos os campos!');
+                return;
+            }
+            if (Email === 'fran865@gmail.com' && password === 'marcelo123') {
+                alert('Login bem-sucedido! Bem-vindo(a), ' + Email + '!');
+                window.location.href = 'paginainicial.html';
+            } else {
+                alert('Usuário ou senha incorretos.');
+            }
+        });
+
+        // 6. **ADICIONE ESTAS FUNÇÕES:** Funções para o Google Sign-In
+        // Função que o Google chama quando o login é bem-sucedido
+        function handleCredentialResponse(response) {
+            const idToken = response.credential;
+            console.log("Token JWT recebido:", idToken);
+
+            // Decodifica o token para extrair as informações do perfil.
+            // ATENÇÃO: Esta decodificação no CLIENTE é APENAS para exibir.
+            // Para segurança real, você precisaria validar este token em um BACKEND.
+            const decodedToken = parseJwt(idToken);
+
+            if (decodedToken) {
+                // Exibe as informações do usuário na página
+                document.getElementById('userName').innerText = decodedToken.name;
+                document.getElementById('userEmail').innerText = decodedToken.email;
+                document.getElementById('userPhoto').src = decodedToken.picture || 'assets/iconTitle/logo.png'; // Use uma foto padrão se não houver
+                document.getElementById('userProfile').style.display = 'block';
+
+                // Esconde o formulário de login, o separador e o botão do Google
+                document.getElementById('login-form').style.display = 'none';
+                document.querySelector('.separator').style.display = 'none';
+                document.querySelector('.g_id_signin').style.display = 'none';
+
+                window.location.href = 'paginainicial.html';
+            }
+        }
+
+        // Função auxiliar para decodificar o token JWT no lado do cliente
+        // (NOVAMENTE: para uso exclusivo de exibição, não para segurança!)
+        function parseJwt (token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                }).join(''));
+                return JSON.parse(jsonPayload);
+            } catch (e) {
+                console.error("Erro ao decodificar JWT:", e);
+                return null;
+            }
+        };
+
+        // Função para simular o logout do Google
+        function signOut() {
+            // Revogar o consentimento do Google (opcional, mas bom para limpeza)
+            google.accounts.id.disableAutoSelect(); // Para que o Google não faça login automático na próxima visita
+            // Se você guardou o token em localStorage, remova-o
+            // localStorage.removeItem('google_id_token'); // Exemplo se você estivesse guardando
+
+            // Resetar a interface para o estado de "deslogado"
+            document.getElementById('userProfile').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.querySelector('.separator').style.display = 'block';
+            document.querySelector('.g_id_signin').style.display = 'block';
+
+            console.log("Usuário deslogado do Google.");
+            // Opcional: redirecionar para a página de login
+            // window.location.href = 'login.html';
+        }
     </script>
 </body>
 </html>

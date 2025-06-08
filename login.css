@@ -2,7 +2,7 @@
     /* Ajuste este valor para o tamanho que você quer que a logo tenha */
     max-width: 120px; /* Por exemplo, de 180px para 120px ou até menos */
 
-    height: auto;     /* MANTENHA ESTA PROPRIEDADE para evitar distorção */
+    height: auto;     
 
     margin-top: 0;
     margin-bottom: 30px;
