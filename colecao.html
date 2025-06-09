@@ -55,7 +55,7 @@
 </div>
 
 <!-- MODAL para visualização ampliada das cartas -->
-<div id="cardModal" class="modal">]
+<div id="cardModal" class="modal">
     <span class="closeBtn">&times;</span>
     <div class="modal-content-wrapper">
         <div class="modal-text left-text" id="leftModalText"></div>
@@ -72,7 +72,7 @@
 <script>
     // Junta todas as cartas em um único array
     const todasCartas = [...comum, ...raro, ...epico, ...lendario];
-    const placeholderImg = 'assets/diversos/carta vazia padrao.png'; // Imagem padrão para cartas não obtidas
+    const placeholderImg = "assets/diversos/carta vazia padrao.png"; // Imagem padrão para cartas não obtidas
 
     // Renderiza a coleção de cartas
     function exibircartascolecao() {
@@ -93,8 +93,14 @@
             slot.classList.add('slot');
 
             const img = document.createElement('img');
-            img.src = contagemCartas[cartaPath] ? cartaPath : placeholderImg; // Usa imagem real ou placeholder
-            img.setAttribute('data-full-src', cartaPath); // Armazena caminho original
+            
+            if (contagemCartas[cartaPath]) {
+                img.src = cartaPath;
+                img.setAttribute('data-full-src', cartaPath);
+            } else {
+                img.src = placeholderImg;
+                slot.classList.add('placeholder');
+            }
 
             slot.appendChild(img);
 
@@ -108,7 +114,7 @@
 
             // Abre modal ao clicar (exceto placeholders)
             slot.addEventListener('click', () => {
-                if (!img.src.includes(placeholderImg)) {
+                if (!slot.classList.contains('placeholder')) {
                     openCardModal(img.src, img.getAttribute('data-full-src'));
                 }
             });
@@ -126,3 +132,5 @@
         document.getElementById('navMenu').classList.toggle('show-menu');
     });
 </script>
+</body>
+</html>
