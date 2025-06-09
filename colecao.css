@@ -279,3 +279,13 @@ h1 {
 .nav-menu a:hover{
   color: #ff8c00;
 }
+
+.slot.placeholder {
+    cursor: default;
+}
+
+.slot.placeholder:hover {
+    transform: none;
+    border-color: #2A628F;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
