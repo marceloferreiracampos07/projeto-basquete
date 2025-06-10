@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio</title>
+    <link rel="icon" href="assets/iconTitle/favicon.png" type="image/png">
+    <link rel="stylesheet" href="paginainicial.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="carregamento.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <style>
+        /* Você pode adicionar estes estilos no seu `paginainicial.css` */
+        /* Estilo para a foto de perfil no menu de navegação */
+        .nav-profile-photo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 8px; /* Espaço entre o nome e a foto */
+            vertical-align: middle; /* Alinha a foto com o texto */
+        }
+        /* Opcional: esconder o "Olá usuário087" e mostrar o nome real */
+        .nav-menu li .default-user-text {
+            display: none; /* Esconde o texto padrão */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader" class="loader-overlay">
+        <div class="bola-loader">
+            <img src="assets/diversos/basketball-svgrepo-com.svg" alt="Carregando..." class="linhas-bola">
+        </div>
+    </div>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html" class="header-logo" onclick="showLoaderOnNavigate(event, 'index.html')">
+                <img src="assets/iconTitle/logo.png" alt="Logo do site">
+            </a>
+            
+            <div class="nav-toggle" id="navToggle">
+               <i class="bi bi-list"></i> 
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li>
+                    <a href="#">
+                        <span class="default-user-text">Olá usuário087</span> 
+                        <span id="navUserName"></span> 
+                        <img id="navUserPhoto" src="assets/diversos/foto em branco.jpg" alt="Foto" class="nav-profile-photo">
+                    </a>
+                </li>
+                <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
+                <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+                <li><a href="#" onclick="signOutAndRedirect()">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="centra-superior">
+        <div class="barra-superior">
+            <div class="carrossel">
+                <div class="carrossel-track" id="carrossel-track-inicial">
+                    </div>
+            </div>
+        </div>
+        
+        <div class="centralizar-btn">
+            <a href="sorteio.html" class="btn abrir-pack" role="button"
+                onclick="showLoaderOnNavigate(event, 'sorteio.html')">
+                Abrir Pacote
+            </a>
+        </div>
+    </div>
+
+    <script src="cards.js"></script>
+    <script src="carregamento.js"></script>
+
+    <script>
+        // Prepara todas as imagens para o carrossel (duplicadas para efeito contínuo)
+        const todasImagens = [...lendario, ...epico, ...raro, ...comum];
+        const fotosCarrossel = [...todasImagens, ...todasImagens];
+        
+        // Insere as imagens no carrossel
+        const trackInicial = document.getElementById("carrossel-track-inicial");
+        fotosCarrossel.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = "carta";
+            trackInicial.appendChild(img);
+        });
+
+        // Esconde o loader quando a página carrega
+        window.addEventListener('load', hideLoader);
+        document.addEventListener('DOMContentLoaded', hideLoader);
+
+        // Controle do menu mobile (toggle)
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show-menu');
+        });
+
+        // Função para exibir o nome e a foto do usuário na barra de navegação
+        function displayUserNameAndPhoto() {
+            // Adicionamos um pequeno atraso antes de fazer a verificação
+            // Isso dá mais tempo para o localStorage ser totalmente lido ao carregar a página
+            setTimeout(() => {
+                const userName = localStorage.getItem('loggedInUserName');
+                const userPhoto = localStorage.getItem('loggedInUserPhoto');
+                const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+                const navUserNameElement = document.getElementById('navUserName');
+                const navUserPhotoElement = document.getElementById('navUserPhoto');
+                const defaultUserTextElement = document.querySelector('.default-user-text');
+
+                // Verificação crucial: Só exibe se estiver logado E tivermos um nome de usuário.
+                if (isLoggedIn === 'true' && userName) {
+                    navUserNameElement.innerText = userName; // Exibe o nome real
+                    if (userPhoto) {
+                        navUserPhotoElement.src = userPhoto; // Exibe a foto do perfil
+                    }
+                    if (defaultUserTextElement) {
+                        defaultUserTextElement.style.display = 'none'; // Esconde o "Olá usuário087"
+                    }
+                } else {
+                    // Se não estiver logado ou não tiver os dados essenciais, redireciona para a página de login
+                    // Esta linha é a mais importante para evitar o acesso não autorizado.
+                    window.location.href = 'login.html';
+                }
+            }, 100); // Atraso de 100ms. Você pode ajustar este valor se ainda tiver problemas.
+        }
+
+        // Função para lidar com o logout
+        function signOutAndRedirect() {
+            // Se o login foi pelo Google, revogue o token do Google
+            if (typeof google !== 'undefined' && google.accounts && google.accounts.id) {
+                google.accounts.id.disableAutoSelect(); // Desabilita o login automático do Google
+            }
+            
+            // Limpa as informações de login do localStorage
+            localStorage.removeItem('loggedInUserName');
+            localStorage.removeItem('loggedInUserEmail');
+            localStorage.removeItem('loggedInUserPhoto');
+            localStorage.removeItem('isLoggedIn'); // Remove o sinalizador de login
+
+            console.log("Usuário deslogado e dados locais removidos.");
+
+            // Redireciona para a página de login
+            window.location.href = 'login.html';
+        }
+
+        // Chama a função para exibir o nome e a foto quando a página carregar
+        // Este é o gatilho para a lógica de verificação de login.
+        window.onload = displayUserNameAndPhoto;
+    </script>
+    </body>
+</html>

@@ -10,10 +10,9 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
     <style>
-        /* Adicione ou ajuste estes estilos no seu `login.css` ou aqui, se preferir */
-        /* Eles ajudam a posicionar o botão do Google e o separador */
+        /* Mantenha seus estilos CSS aqui ou mova-os para `login.css` */
         .separator {
-            margin: 25px 0; /* Espaçamento acima e abaixo do "ou" */
+            margin: 25px 0;
             position: relative;
             text-align: center;
             color: #888;
@@ -23,17 +22,18 @@
             content: '';
             position: absolute;
             top: 50%;
-            width: 40%; /* Largura das linhas laterais */
+            width: 40%;
             height: 1px;
             background: #eee;
         }
         .separator::before { left: 0; }
         .separator::after { right: 0; }
         .separator span {
-            background: white; /* Cor de fundo para o texto "ou" */
+            background: white;
             padding: 0 10px;
         }
-        /* Estilos para o perfil do usuário após o login do Google */
+        /* Este #userProfile é para teste na página de login,
+           não será exibido após o redirecionamento para index.html */
         #userProfile {
             margin-top: 20px;
             padding: 20px;
@@ -41,6 +41,7 @@
             border-radius: 8px;
             background-color: #f9f9f9;
             text-align: center;
+            display: none; /* Inicia oculto */
         }
         #userProfile img {
             border-radius: 50%;
@@ -88,7 +89,8 @@
         <div class="separator"><span>ou</span></div>
 
         <div id="g_id_onload"
-             data-client_id="399220494255-2d5vu09rm739ms8k0g327jqsumn6cdln.apps.googleusercontent.com" data-callback="handleCredentialResponse"
+             data-client_id="399220494255-2d5vu09rm739ms8k0g327jqsumn6cdln.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse"
              data-auto_prompt="false">
         </div>
         <div class="g_id_signin"
@@ -110,7 +112,7 @@
     </div>
 
     <script>
-        // Seu script de login tradicional já existente
+        // Lógica de login com formulário tradicional
         document.getElementById('login-form').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -126,41 +128,34 @@
             }
             if (Email === 'fran865@gmail.com' && password === 'marcelo123') {
                 alert('Login bem-sucedido! Bem-vindo(a), ' + Email + '!');
-                window.location.href = 'paginainicial.html';
+                // Salva o nome do usuário no localStorage ANTES de redirecionar
+                localStorage.setItem('loggedInUserName', 'Usuário Padrão'); // Ou o nome que você quiser
+                localStorage.setItem('isLoggedIn', 'true'); // Sinaliza que está logado
+                window.location.href = 'index.html'; // Redireciona para a página principal
             } else {
                 alert('Usuário ou senha incorretos.');
             }
         });
 
-        // 6. **ADICIONE ESTAS FUNÇÕES:** Funções para o Google Sign-In
-        // Função que o Google chama quando o login é bem-sucedido
+        // Callback para o Google Sign-In
         function handleCredentialResponse(response) {
             const idToken = response.credential;
-            console.log("Token JWT recebido:", idToken);
-
-            // Decodifica o token para extrair as informações do perfil.
-            // ATENÇÃO: Esta decodificação no CLIENTE é APENAS para exibir.
-            // Para segurança real, você precisaria validar este token em um BACKEND.
-            const decodedToken = parseJwt(idToken);
+            const decodedToken = parseJwt(idToken); // Decodifica o token para pegar os dados do usuário
 
             if (decodedToken) {
-                // Exibe as informações do usuário na página
-                document.getElementById('userName').innerText = decodedToken.name;
-                document.getElementById('userEmail').innerText = decodedToken.email;
-                document.getElementById('userPhoto').src = decodedToken.picture || 'assets/iconTitle/logo.png'; // Use uma foto padrão se não houver
-                document.getElementById('userProfile').style.display = 'block';
+                // Salva as informações do usuário do Google no localStorage ANTES de redirecionar
+                localStorage.setItem('loggedInUserName', decodedToken.name);
+                localStorage.setItem('loggedInUserEmail', decodedToken.email);
+                localStorage.setItem('loggedInUserPhoto', decodedToken.picture || ''); // Salva a URL da foto, se houver
+                localStorage.setItem('isLoggedIn', 'true'); // Sinaliza que está logado
 
-                // Esconde o formulário de login, o separador e o botão do Google
-                document.getElementById('login-form').style.display = 'none';
-                document.querySelector('.separator').style.display = 'none';
-                document.querySelector('.g_id_signin').style.display = 'none';
-
-                window.location.href = 'paginainicial.html';
+                // Redireciona para a página principal após salvar os dados
+                window.location.href = 'index.html';
             }
         }
 
         // Função auxiliar para decodificar o token JWT no lado do cliente
-        // (NOVAMENTE: para uso exclusivo de exibição, não para segurança!)
+        // (Lembre-se: esta decodificação no cliente é APENAS para exibição, NÃO para segurança!)
         function parseJwt (token) {
             try {
                 const base64Url = token.split('.')[1];
@@ -175,23 +170,36 @@
             }
         };
 
-        // Função para simular o logout do Google
+        // Função para simular o logout do Google (chamada pelo botão "Sair do Google" nesta página, se visível)
+        // O logout principal será na index.html, mas mantemos aqui para consistência.
         function signOut() {
             // Revogar o consentimento do Google (opcional, mas bom para limpeza)
-            google.accounts.id.disableAutoSelect(); // Para que o Google não faça login automático na próxima visita
-            // Se você guardou o token em localStorage, remova-o
-            // localStorage.removeItem('google_id_token'); // Exemplo se você estivesse guardando
+            google.accounts.id.disableAutoSelect(); 
+            
+            // Limpa os dados de login do localStorage
+            localStorage.removeItem('loggedInUserName');
+            localStorage.removeItem('loggedInUserEmail');
+            localStorage.removeItem('loggedInUserPhoto');
+            localStorage.removeItem('isLoggedIn'); 
 
-            // Resetar a interface para o estado de "deslogado"
-            document.getElementById('userProfile').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
-            document.querySelector('.separator').style.display = 'block';
-            document.querySelector('.g_id_signin').style.display = 'block';
-
-            console.log("Usuário deslogado do Google.");
-            // Opcional: redirecionar para a página de login
-            // window.location.href = 'login.html';
+            console.log("Usuário deslogado do Google na página de login.");
+            // Opcional: pode-se esconder o perfil e mostrar o formulário novamente aqui
+            // document.getElementById('userProfile').style.display = 'none';
+            // document.getElementById('login-form').style.display = 'block';
+            // document.querySelector('.separator').style.display = 'block';
+            // document.querySelector('.g_id_signin').style.display = 'block';
         }
+
+        // Adição: Verificar se já está logado ao carregar a página de login
+        // Se já estiver logado, redireciona para a index.html
+        window.onload = function() {
+            // Um pequeno atraso para garantir que o localStorage seja lido corretamente ao carregar a página
+            setTimeout(() => {
+                if (localStorage.getItem('isLoggedIn') === 'true') {
+                    window.location.href = 'index.html';
+                }
+            }, 50); // Atraso de 50 milissegundos
+        };
     </script>
 </body>
 </html>
