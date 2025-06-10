@@ -59,6 +59,55 @@ const cardDescricao = { //cartas lendarias
    leftText: "Anthony Davis é um basquetebolista estadunidense, atualmente no Dallas Mavericks. Destacado por sua versatilidade como ala-pivô/pivô, é um defensor de elite e talentoso no ataque. Foi campeão da NBA em 2020, 10 vezes All-Star e faz parte da lista dos 75 maiores jogadores da história da NBA.",
    rightText: "Anthony Davis tem um Campeonato da NBA com o Los Angeles Lakers em 2020, ao lado de LeBron James. Ele também venceu a Copa NBA em 2023. Individualmente, foi MVP do All-Star Game em 2017, é um All-Star múltiplo e integrou diversas vezes os times All-NBA e All-Defensive."
    },
+   "assets/cards/Raro/DeronWilliams-rara.png": {
+    leftText: "Deron Williams é um ex-jogador profissional de basquete americano. Armador, foi selecionado em terceiro lugar no draft da NBA de 2005. Jogou por equipes como Utah Jazz, Brooklyn Nets, Dallas Mavericks e Cleveland Cavaliers. Foi bicampeão olímpico pelos EUA (2008 e 2012) e participou de três All-Star Games da NBA. Após a aposentadoria, explorou esportes de combate, incluindo boxe.",
+    rightText: "Deron Williams, um armador talentoso da NBA, não conquistou títulos da liga. No entanto, ele foi duas vezes medalhista de ouro olímpico com a seleção dos EUA (2008 e 2012) e três vezes All-Star da NBA. Ele também foi selecionado duas vezes para o All-NBA Second Team."
+   },
+   "assets/cards/Raro/DraymondGreen-rara.png": {
+    leftText: "Draymond Green é um jogador de basquete americano conhecido por sua defesa intensa e versatilidade. Tetra-campeão da NBA com o Golden State Warriors, ele é uma peça crucial no sistema da equipe, sendo um líder vocal e facilitador. Embora controverso às vezes, seu impacto na quadra é inegável, especialmente por sua capacidade de atuar em múltiplas posições.",
+    rightText: "Draymond Green possui uma carreira vitoriosa na NBA, destacando-se por quatro títulos da NBA com o Golden State Warriors. Ele também foi Jogador Defensivo do Ano em 2017 e é um All-Star múltiplo. Além disso, conquistou duas medalhas de ouro olímpicas com a seleção dos EUA."
+   },
+   "assets/cards/Raro/DwightHoward-rara.png": {
+    leftText: "Dwight Howard é um ex-jogador de basquete norte-americano, pivô, conhecido como Superman. Foi campeão da NBA em 2020 e é oito vezes All-Star. Três vezes eleito Jogador Defensivo do Ano, Howard se destacou por seu atletismo, rebotes e defesa, sendo indicado ao Hall da Fama do Basquete em 2025.",
+    rightText: "Dwight Howard possui um título da NBA (2020, com o Los Angeles Lakers). Além disso, ele foi 3 vezes eleito o Melhor Jogador Defensivo do Ano (2009-2011), 8 vezes All-Star e 8 vezes selecionado para times All-NBA. Ele também ganhou ouro olímpico em Pequim 2008."
+   },
+   "assets/cards/Raro/JimmyButler-rara.png": {
+    leftText: "Jimmy Butler é um renomado jogador de basquete profissional norte-americano, atualmente no Golden State Warriors. Conhecido por sua intensidade e liderança, ele é um ala versátil, excelente tanto na defesa quanto no ataque. Já foi selecionado seis vezes para o All-Star Game da NBA e é medalhista de ouro olímpico em 2016.",
+    rightText: "Jimmy Butler não possui um título da NBA, mas suas conquistas incluem uma medalha de ouro olímpica (Rio 2016). Ele é seis vezes All-Star, cinco vezes All-NBA (incluindo uma seleção para o Segundo Time) e cinco vezes All-Defensive Team. Também foi eleito o Jogador Que Mais Evoluiu (Most Improved Player) em 2015 e MVP das Finais da Conferência Leste em 2023."
+   },
+   "assets/cards/Raro/JohnWall-rara.png": {
+    leftText: "John Wall é um talentoso armador de basquete, cinco vezes NBA All-Star (2014-2018) e primeira escolha geral do Draft da NBA de 2010 pelo Washington Wizards. Conhecido por sua velocidade e passes, teve sua carreira impactada por lesões graves a partir de 2019, passando por Houston Rockets e Los Angeles Clippers. Atualmente, busca uma oportunidade para retornar às quadras.",
+    rightText: "John Wall não possui títulos de campeonatos da NBA. No entanto, sua carreira é marcada por conquistas individuais notáveis: 5 vezes NBA All-Star, seleção para o All-NBA Team (2016-17) e o NBA All-Rookie First Team (2010-11). Ele também foi MVP do NBA Rookie Challenge."
+   },
+   "assets/cards/Raro/KevinLove-rara.png": {
+    leftText: "Kevin Love é um renomado jogador de basquete americano, campeão da NBA em 2016 com o Cleveland Cavaliers. Conhecido por sua versatilidade como ala-pivô, destacou-se pelos rebotes e arremessos de três pontos. Além da quadra, Love é um defensor ativo da saúde mental, compartilhando abertamente suas experiências para desestigmatizar o tema no esporte e na sociedade. Atualmente joga pelo Miami Heat.",
+    rightText: "Kevin Love tem uma carreira recheada de conquistas. Ele é campeão da NBA (2016 com o Cleveland Cavaliers), medalha de ouro olímpica (Londres 2012) e campeão mundial (2010). Além disso, foi 5x NBA All-Star e NBA Most Improved Player em 2011."
+   },
+   "assets/cards/Raro/KlayThompson-rara.png": {
+    leftText: "Klay Thompson é um renomado ala-armador de basquete, amplamente considerado um dos melhores arremessadores de três pontos da história da NBA. Ele passou 13 anos no Golden State Warriors, onde formou os Splash Brothers com Stephen Curry e conquistou quatro títulos da NBA. Atualmente, joga pelo Dallas Mavericks.",
+    rightText: "Klay Thompson é tetracampeão da NBA com o Golden State Warriors (2015, 2017, 2018 e 2022). Ao lado de Stephen Curry, formou os Splash Brothers, revolucionando o jogo com o arremesso de três pontos. Suas conquistas incluem também recordes de pontos em um único quarto (37) e bolas de três em um jogo (14)."
+   },
+   "assets/cards/Raro/Manu-Ginóbili-rara.png": {
+    leftText: "Manu Ginóbili é um lendário jogador de basquete argentino, conhecido por sua carreira icônica no San Antonio Spurs. Com quatro títulos da NBA, ele revolucionou o papel de sexto homem com seu estilo de jogo agressivo e inovador. Ginóbili também liderou a Argentina a uma medalha de ouro olímpica em 2004, solidificando seu status como um dos maiores atletas de seu país.",
+    rightText: "Manu Ginóbili é um dos jogadores mais condecorados do basquete. Ele conquistou quatro títulos da NBA com o San Antonio Spurs (2003, 2005, 2007, 2014) e uma medalha de ouro olímpica com a seleção argentina em Atenas 2004. Ele também venceu a Euroliga em 2001."
+   },
+   "assets/cards/Raro/Pierce-rara.png": {
+    leftText: "Paul Pierce, conhecido como The Truth, é um ex-jogador de basquete americano que se destacou na NBA, principalmente pelo Boston Celtics. Ala versátil, ele foi um dos pilares do time por 15 temporadas, levando os Celtics ao título da NBA em 2008, onde foi eleito o MVP das Finais. Pierce foi 10 vezes All-Star e é membro do Hall da Fama.",
+    rightText: "Paul Pierce é conhecido principalmente por seu título de Campeão da NBA em 2008 com o Boston Celtics, onde também foi nomeado MVP das Finais. Ele foi selecionado 10 vezes para o NBA All-Star e teve uma carreira notável como pontuador, sendo um dos maiores da história do Celtics."
+   },
+   "assets/cards/Raro/ShawnKemp-rara.png": {
+    leftText: "Shawn Kemp, o Reign Man, foi um ala-pivô dinâmico da NBA, famoso por suas enterradas explosivas e atletismo nos anos 90, principalmente com o Seattle SuperSonics. Ele formou uma dupla icônica com Gary Payton, levando os Sonics às Finais da NBA em 1996. Fora das quadras, sua carreira foi marcada por problemas pessoais e financeiros.",
+    rightText: "Shawn Kemp não conquistou um título da NBA, chegando às Finais em 1996 com o Seattle SuperSonics. No entanto, ele foi um 6 vezes All-Star da NBA e 3 vezes selecionado para o Segundo Time All-NBA. Também foi medalhista de ouro no Campeonato Mundial FIBA de 1994 com a seleção dos EUA."
+   },
+   "assets/cards/Raro/TonyParker-rara.png": {
+    leftText: "Tony Parker é um ex-jogador de basquete francês, armador lendário do San Antonio Spurs. Conquistou quatro títulos da NBA (2003, 2005, 2007, 2014) e foi MVP das Finais em 2007. Com uma carreira brilhante, tanto na NBA quanto pela seleção francesa, é reconhecido por sua velocidade e habilidade, sendo membro do Hall da Fama do Basquete.",
+    rightText: "Tony Parker conquistou quatro títulos da NBA com o San Antonio Spurs (2003, 2005, 2007, 2014) e foi nomeado MVP das Finais da NBA em 2007. Ele também foi seis vezes All-Star e teve uma carreira notável defendendo a França em competições internacionais, incluindo um título de EuroBasket em 2013, onde também foi MVP."
+   },
+   "assets/cards/Raro/VinceCarter-rara.png": {
+    leftText: "Vince Carter, conhecido como Vinsanity, foi um fenômeno na NBA, famoso por suas enterradas espetaculares e longevidade. Jogou por oito equipes em 22 temporadas, sendo o único a atuar em quatro décadas diferentes. Um verdadeiro ícone do basquete, marcou a história com seu atletismo e paixão pelo jogo.",
+    rightText: "Vince Carter não conquistou títulos da NBA. No entanto, sua carreira de 22 anos foi repleta de conquistas individuais e em seleções: Medalha de Ouro Olímpica (2000), Rookie of the Year (1999), Campeão do Slam Dunk Contest (2000), e oito vezes NBA All-Star (2000-2007). Ele também foi selecionado para o All-NBA Second Team (2001) e All-NBA Third Team (2000)."
+   },
+   //cartas comuns
 };
 
 
