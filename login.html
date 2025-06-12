@@ -8,66 +8,6 @@
     <link rel="stylesheet" href="login.css">
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-
-    <style>
-        /* Mantenha seus estilos CSS aqui ou mova-os para `login.css` */
-        .separator {
-            margin: 25px 0;
-            position: relative;
-            text-align: center;
-            color: #888;
-        }
-        .separator::before,
-        .separator::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 40%;
-            height: 1px;
-            background: #eee;
-        }
-        .separator::before { left: 0; }
-        .separator::after { right: 0; }
-        .separator span {
-            background: white;
-            padding: 0 10px;
-        }
-        /* Este #userProfile é para teste na página de login,
-           não será exibido após o redirecionamento para index.html */
-        #userProfile {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            background-color: #f9f9f9;
-            text-align: center;
-            display: none; /* Inicia oculto */
-        }
-        #userProfile img {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-        #userProfile p {
-            margin: 8px 0;
-            color: #444;
-        }
-        #userProfile .logout-button {
-            background-color: #dc3545;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            margin-top: 15px;
-        }
-        #userProfile .logout-button:hover {
-            background-color: #c82333;
-        }
-    </style>
 </head>
 <body>
     <div class="login-container">
