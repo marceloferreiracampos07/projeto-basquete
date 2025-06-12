@@ -107,9 +107,99 @@ const cardDescricao = { //cartas lendarias
     leftText: "Vince Carter, conhecido como Vinsanity, foi um fenômeno na NBA, famoso por suas enterradas espetaculares e longevidade. Jogou por oito equipes em 22 temporadas, sendo o único a atuar em quatro décadas diferentes. Um verdadeiro ícone do basquete, marcou a história com seu atletismo e paixão pelo jogo.",
     rightText: "Vince Carter não conquistou títulos da NBA. No entanto, sua carreira de 22 anos foi repleta de conquistas individuais e em seleções: Medalha de Ouro Olímpica (2000), Rookie of the Year (1999), Campeão do Slam Dunk Contest (2000), e oito vezes NBA All-Star (2000-2007). Ele também foi selecionado para o All-NBA Second Team (2001) e All-NBA Third Team (2000)."
    },
-   //cartas comuns
+   "assets/cards/Comum/Al Horford comum.png": {//cartas comuns
+   leftText:"Al Horford é um jogador de basquete dominicano, de 39 anos, que atua como pivô/ala-pivô no **Boston Celtics** da NBA. Cinco vezes NBA All-Star, ele conquistou seu primeiro título da liga em 2024 com os Celtics, sendo peça fundamental na campanha. Conhecido por sua versatilidade e liderança.",
+   rightText: "Al Horford tem uma carreira recheada de conquistas. Ele foi **bicampeão da NCAA** com a Universidade da Flórida (2006 e 2007) antes de chegar à NBA. Na liga profissional, foi cinco vezes All-Star e, em 2024, finalmente conquistou seu tão esperado título da NBA com o Boston Celtics, tornando-se o primeiro dominicano a realizar tal feito."
+ },
+  "assets/cards/Comum/Andre Iguodala comum.png": {
+    leftText: "Andre Iguodala é um ex-jogador de basquete americano, tetracampeão da NBA com o Golden State Warriors e MVP das Finais em 2015. Conhecido por sua versatilidade defensiva e inteligência em quadra, também conquistou duas medalhas de ouro olímpicas com a seleção dos EUA. Atualmente, ele atua como diretor executivo interino da Associação Nacional de Jogadores de Basquete (NBPA).",
+    rightText: "Andre Iguodala possui quatro títulos da NBA (2015, 2017, 2018 e 2022), todos conquistados com o Golden State Warriors. Além disso, ele foi nomeado MVP das Finais da NBA em 2015. Completam seus principais títulos a medalha de ouro nos Jogos Olímpicos de 2012 e no Campeonato Mundial de 2010, ambos com a seleção dos EUA."
+  } ,
+  "assets/cards/Comum/Blake Griffin comum.png": {
+    leftText: "Blake Griffin é um ex-jogador de basquete amplamente conhecido por suas enterradas espetaculares e atletismo explosivo no início de sua carreira na NBA. Ele foi a primeira escolha geral do draft de 2009 e jogou por equipes como o Los Angeles Clippers, Detroit Pistons e Brooklyn Nets, tornando-se seis vezes All-Star.",
+    rightText: "Blake Griffin, uma ex-estrela da NBA, acumulou diversos prêmios individuais ao longo de sua carreira. Seus principais títulos incluem Novato do Ano da NBA (2011), campeão do Slam Dunk Contest (2011), e seis seleções para o NBA All-Star (2011-2015, 2019). Ele também foi nomeado para equipes All-NBA em cinco ocasiões."
+  },
+  "assets/cards/Comum/Brook Lopez comum.png": {
+    leftText: "Brook Lopez é um pivô veterano da NBA que atua pelo Milwaukee Bucks. Conhecido por sua versatilidade, combina um jogo defensivo sólido com a capacidade de arremessar de três pontos, o que lhe rendeu o apelido Splash Mountain. Foi campeão da NBA em 2021 com os Bucks e é o maior pontuador da história da franquia New Jersey/Brooklyn Nets.",
+    rightText: "Brook Lopez possui um título da NBA conquistado em 2021 com o Milwaukee Bucks. Além disso, ele foi NBA All-Star em 2013, integrou a Primeira Equipe de Defesa da NBA (NBA All-Defensive First Team) em 2023 e a Segunda Equipe de Defesa da NBA (NBA All-Defensive Second Team) em 2020. Também foi campeão da NBA Cup em 2024."
+  },
+  "assets/cards/Comum/Chris Bosh comum.png": {
+    leftText: "Chris Bosh é um ex-jogador de basquete americano, bicampeão da NBA com o Miami Heat. Conhecido por sua versatilidade como pivô/ala-pivô, foi 11 vezes All-Star e membro do Big Three do Heat ao lado de LeBron James e Dwyane Wade. Sua carreira foi encurtada por coágulos sanguíneos.",
+    rightText: "Chris Bosh é bicampeão da NBA, conquistando os títulos com o Miami Heat em 2012 e 2013, ao lado de LeBron James e Dwyane Wade. Ele também foi 11 vezes All-Star e ganhou a medalha de ouro nas Olimpíadas de Pequim em 2008 com a seleção dos EUA. Sua camisa #1 foi aposentada pelo Heat."
+  },
+  "assets/cards/Comum/Danny Green comum.png": {
+    leftText: "Danny Green é um ex-jogador de basquete profissional norte-americano, tricampeão da NBA com San Antonio Spurs (2014), Toronto Raptors (2019) e Los Angeles Lakers (2020). Ele se aposentou em outubro de 2024, após 15 temporadas na liga, sendo um dos poucos a conquistar títulos por três equipes diferentes.",
+    rightText: "Danny Green é tricampeão da NBA, um dos poucos jogadores a conquistar o título por três franquias diferentes. Ele venceu com o San Antonio Spurs (2014), Toronto Raptors (2019) e Los Angeles Lakers (2020). Ele também foi campeão da NCAA em 2009 com a Universidade da Carolina do Norte."
+  },
+  "assets/cards/Comum/DeMar DeRozan comum.png": {
+    leftText: "DeMar DeRozan é um ala-armador/ala da NBA, atualmente jogando pelo Sacramento Kings. Draftado em 2009 pelos Toronto Raptors, onde se tornou o maior pontuador da franquia. É um seis vezes All-Star e conhecido por seu eficaz jogo de meia distância. Ele também teve passagens pelo San Antonio Spurs e Chicago Bulls.",
+    rightText: "DeMar DeRozan não possui títulos da NBA, mas acumula conquistas individuais notáveis. Ele é seis vezes NBA All-Star e três vezes selecionado para times All-NBA (duas vezes para o Segundo Time e uma para o Terceiro). Também foi MVP do torneio Pac-10 em sua carreira universitária."
+  },
+  "assets/cards/Comum/Derek Fisher comum.png": {
+    leftText: "Derek Fisher é um ex-jogador e treinador da NBA, famoso por sua carreira vitoriosa com o Los Angeles Lakers. Conquistou cinco campeonatos da NBA como armador, conhecido por sua liderança, arremessos decisivos em momentos cruciais e inteligência em quadra.",
+    rightText: "Derek Fisher conquistou cinco títulos da NBA com o Los Angeles Lakers (2000, 2001, 2002, 2009, 2010). Além disso, ele é detentor do recorde de mais jogos de playoffs disputados na história da NBA (259), um testemunho de sua longevidade e sucesso na liga."
+  },
+  "assets/cards/Comum/Eric Gordon comum.png": {
+    leftText: "Eric Gordon é um talentoso arremessador e veterano da NBA conhecido por sua capacidade de pontuar, especialmente da linha de três pontos. Ele traz experiência e poder ofensivo para qualquer equipe, sendo uma ameaça constante no ataque.",
+    rightText: "Eric Gordon tem alguns títulos e honrarias individuais notáveis em sua carreira. Ele foi o NBA Sixth Man of the Year (Sexto Homem do Ano) em 2017, enquanto jogava pelo Houston Rockets. No mesmo ano, venceu o NBA Three-Point Contest (Torneio de Três Pontos). Além disso, foi nomeado para o NBA All-Rookie Second Team em 2009."
+  },
+  "assets/cards/Comum/Harrison Barnes comum.png": {
+    leftText: "Harrison Barnes é um ala da NBA nascido em 1992. Draftado pelo Golden State Warriors em 2012, foi campeão em 2015 e ganhou uma medalha de ouro olímpica em 2016. Atualmente joga no San Antonio Spurs, e é conhecido por sua versatilidade e arremesso de três pontos.",
+    rightText: "Harrison Barnes possui títulos importantes em sua carreira. Ele foi campeão da NBA em 2015 com o Golden State Warriors e conquistou a medalha de ouro olímpica em 2016 com a seleção dos EUA. Ele também foi selecionado para o NBA All-Rookie First Team em 2013."
+  },
+  "assets/cards/Comum/J.J. Redick comum.png": {
+    leftText: "Jonathan Clay J.J. Redick é um ex-jogador de basquete e agora treinador norte-americano. Conhecido por seu arremesso de três pontos, jogou por 15 temporadas na NBA em seis times, incluindo Orlando Magic e Los Angeles Clippers. Após se aposentar, tornou-se analista da ESPN e, em junho de 2024, foi anunciado como o novo técnico do Los Angeles Lakers.",
+    rightText: "J.J. Redick teve uma carreira universitária brilhante, conquistando dois títulos da NCAA (2001, 2006) com o Duke Blue Devils. No cenário profissional da NBA, ele não venceu nenhum título, mas foi um jogador valioso e especialista em arremessos de 3 pontos por diversas equipes."
+  },
+  "assets/cards/Comum/Jamal Crawford comum.png": {
+    leftText: "Jamal Crawford é um ex-jogador de basquete americano conhecido por seu controle de bola espetacular e arremessos imprevisíveis. Apelidado de J-Crossover, ele jogou 20 temporadas na NBA e é o único jogador na história a ganhar o prêmio de Sexto Homem do Ano três vezes. Crawford também é o segundo jogador a marcar mais de 10.000 pontos vindo do banco.",
+    rightText: "Jamal Crawford é amplamente reconhecido por seus prêmios individuais na NBA, especialmente como um dos maiores reservas da história. Ele conquistou o prêmio de Sexto Homem do Ano da NBA três vezes (2010, 2014, 2016), um recorde que compartilha com Lou Williams. Além disso, foi o jogador mais velho a fazer 50 pontos em um jogo da NBA e o único a ter jogos de 50 pontos por quatro franquias diferentes."
+  },
+  "assets/cards/Comum/Joe Johnson comum.png": {
+    leftText: "Joe Marcus Johnson, ex-jogador de basquete americano, sete vezes All-Star da NBA, conhecido como Iso Joe por sua habilidade no isolamento. Ele jogou por diversas equipes, incluindo Atlanta Hawks e Brooklyn Nets.",
+    rightText: "Joe Johnson, conhecido como Iso Joe, teve uma carreira notável no basquete. Ele foi 7 vezes selecionado para o NBA All-Star (2007-2012, 2014) e nomeado para o All-NBA Third Team em 2010. Também fez parte do NBA All-Rookie Second Team em 2002. Pelo Team USA, conquistou a medalha de bronze no Campeonato Mundial de 2006."
+  },
+  "assets/cards/Comum/LaMarcus Aldridge comum.png": {
+    leftText: "LaMarcus Aldridge é um ex-jogador de basquete profissional norte-americano, conhecido por sua habilidade como ala-pivô/pivô e seu arremesso característico. Selecionado como a segunda escolha geral no Draft da NBA de 2006, jogou principalmente pelo Portland Trail Blazers e San Antonio Spurs, sendo 7 vezes All-Star e 5 vezes selecionado para times All-NBA. Ele encerrou sua carreira devido a uma condição cardíaca.",
+    rightText: "LaMarcus Aldridge não conquistou um título da NBA. No entanto, ele teve uma carreira individual destacada, sendo selecionado 7 vezes para o NBA All-Star Game, 2 vezes para o All-NBA Second Team e 3 vezes para o All-NBA Third Team."
+  },
+  "assets/cards/Comum/Michael Finley comum.png": {
+    leftText: "Michael Finley é um ex-jogador da NBA, conhecido por sua alta capacidade de pontuação como ala/armador. Foi selecionado duas vezes para o All-Star Game, principalmente jogando pelo Dallas Mavericks, e conquistou um campeonato da NBA com o San Antonio Spurs em 2007. Após 15 temporadas como jogador, ele assumiu uma função na diretoria, atuando atualmente como assistente do gerente geral e vice-presidente de pessoal de jogadores para o Dallas Mavericks.",
+    rightText: "Michael Finley é um ex-jogador de basquete com uma carreira notável. Seus principais títulos e conquistas incluem um Campeonato da NBA em 2007 com o San Antonio Spurs. Ele também foi selecionado duas vezes para o NBA All-Star Game (2000, 2001) e integrou o NBA All-Rookie First Team em 1996."
+  },
+  "assets/cards/Comum/Monta Ellis comum.png": {
+    leftText: "Monta Ellis é um ex-jogador profissional de basquete americano que atuou como ala-armador/armador na NBA. Conhecido por sua capacidade de pontuação e agilidade, ele foi eleito o Most Improved Player (Jogador que Mais Evoluiu) da NBA em 2007. Durante sua carreira de 12 temporadas, jogou por equipes como Golden State Warriors, Milwaukee Bucks, Dallas Mavericks e Indiana Pacers.",
+    rightText: "Monta Ellis não conquistou títulos de campeão na NBA. Suas principais honrarias individuais incluem o prêmio de Jogador Que Mais Melhorou (Most Improved Player) na temporada 2006-2007. Ele também foi selecionado para o Time de Calouros da NBA (NBA All-Rookie Second Team) em 2006."
+  },
+  "assets/cards/Comum/Pascal Siakam comum.png": {
+    leftText: "Pascal Siakam é um talentoso ala-pivô camaronês que joga atualmente pelo Indiana Pacers na NBA. Campeão da NBA em 2019 com o Toronto Raptors, ele é conhecido por sua versatilidade e evolução constante no jogo. Siakam foi eleito o Most Improved Player em 2019 e já foi duas vezes All-Star e duas vezes selecionado para times All-NBA. Sua trajetória é inspiradora, pois só começou a jogar basquete aos 17 anos, vindo de uma formação religiosa.",
+    rightText: "Pascal Siakam possui importantes títulos e prêmios na carreira, incluindo o Campeonato da NBA (2019) com o Toronto Raptors e o prêmio de Jogador Que Mais Evoluiu (Most Improved Player) da NBA no mesmo ano. Ele também foi Campeão da G-League e MVP das Finais da G-League em 2017. Mais recentemente, foi eleito MVP das Finais da Conferência Leste em 2025."
+  },
+  "assets/cards/Comum/Peja Stojaković comum.png": {
+    leftText: "Peja Stojaković foi um ala-pivô greco-sérvio, renomado por ser um dos maiores arremessadores de três pontos da história da NBA. Três vezes All-Star, ele brilhou com o Sacramento Kings e conquistou um campeonato da NBA com o Dallas Mavericks em 2011. Sua camisa número 16 foi aposentada pelos Kings. Após a aposentadoria, atuou em funções administrativas na NBA.",
+    rightText: "Peja Stojaković conquistou um título da NBA em 2011 com o Dallas Mavericks. Em sua carreira, foi 3 vezes NBA All-Star (2002-2004) e duas vezes campeão do Torneio de Três Pontos da NBA (2002, 2003). A nível internacional, foi MVP do EuroBasket FIBA em 2001 e campeão da Copa do Mundo FIBA em 2002."
+  },
+  "assets/cards/Comum/Rajon Rondo comum.png": {
+    leftText: "Rajon Rondo é um ex-armador da NBA, renomado por sua visão de jogo e passes. Conquistou dois campeonatos da NBA, um com o Boston Celtics (2008) e outro com o Los Angeles Lakers (2020), sendo um dos poucos a vencer por ambas as franquias rivais. Foi quatro vezes All-Star e várias vezes selecionado para equipes de defesa. Atualmente, tem explorado um papel de treinador convidado, inclusive com o Milwaukee Bucks.",
+    rightText: "Rajon Rondo conquistou dois títulos da NBA: o primeiro em 2008 com o Boston Celtics e o segundo em 2020 com o Los Angeles Lakers. Além disso, foi quatro vezes selecionado para o NBA All-Star Game e liderou a liga em assistências em três temporadas. Sua visão de jogo e passes únicos foram marcas registradas de sua carreira."
+  },
+  "assets/cards/Comum/Ricky Rubio comum.png": {
+    leftText: "Ricky Rubio é um jogador de basquete espanhol, armador, conhecido por suas habilidades de passe e defesa. Ele jogou por várias equipes da NBA, incluindo o Minnesota Timberwolves, Utah Jazz, Phoenix Suns e Cleveland Cavaliers. Em 2023, anunciou uma pausa na carreira para priorizar sua saúde mental. Ele também é um MVP da Copa do Mundo FIBA (2019) e medalhista olímpico pela Espanha.",
+    rightText: "icky Rubio possui uma carreira recheada de conquistas, especialmente a nível internacional e em clubes espanhóis. Destacam-se o MVP da Copa do Mundo FIBA 2019, onde levou a Espanha ao ouro. Conquistou a EuroLiga em 2010 com o Barcelona, além de múltiplos títulos na Liga ACB e Copas do Rei. Pela seleção espanhola, tem duas medalhas de ouro no EuroBasket (2009, 2011) e prata nas Olimpíadas de 2008."
+  },
+  "assets/cards/Comum/Rudy Gay comum.png": {
+    leftText: "Rudy Gay é um ex-jogador profissional de basquete americano que atuou como ala na NBA. Selecionado em 2006, ele jogou por diversos times como Memphis Grizzlies, Toronto Raptors, Sacramento Kings, San Antonio Spurs e Utah Jazz, onde encerrou sua carreira em 2023 após 17 temporadas.",
+    rightText: "Rudy Gay, um talentoso ala na NBA, infelizmente não conquistou nenhum título expressivo em sua carreira. Apesar de ser um jogador consistente e atlético por muitos anos, ele nunca fez parte de um time campeão da NBA, nem ganhou prêmios individuais de grande relevância como MVP ou Defensive Player of the Year. Sua carreira foi marcada por boas atuações individuais, mas sem o brilho de campeonatos."
+  },
+  "assets/cards/Comum/Serge Ibaka comum.png": {
+    leftText: "Serge Ibaka é um jogador congolês-espanhol conhecido por suas habilidades defensivas e arremesso de média distância. Foi campeão da NBA com o Toronto Raptors em 2019 e líder em tocos da liga duas vezes. Atualmente, joga no Real Madrid da Liga ACB e Euroliga, após passagens por Oklahoma City Thunder, Orlando Magic, Los Angeles Clippers e Milwaukee Bucks.",
+    rightText: "Serge Ibaka possui um currículo notável. Seus principais títulos incluem um Campeonato da NBA em 2019 com o Toronto Raptors, um EuroBasket em 2011 e uma medalha de prata nas Olimpíadas de 2012 representando a seleção espanhola. Ele também foi tricampeão da Equipe Ideal de Defesa da NBA (2012-2014) e líder em tocos da liga duas vezes (2012, 2013)."
+  },
+  "assets/cards/Comum/Tobias Harris comum.png": {
+    leftText: "Tobias Harris é um jogador profissional de basquete americano que atua como ala. Ele joga pelo Detroit Pistons na NBA. Draftado em 2011, Harris passou por times como Milwaukee Bucks, Orlando Magic, Los Angeles Clippers e Philadelphia 76ers antes de retornar aos Pistons. Ele é conhecido por sua capacidade de pontuação e rebotes.",
+    rightText: "Tobias Harris não possui títulos de campeonato da NBA ou outras grandes honrarias coletivas na sua carreira profissional. Ele foi reconhecido individualmente no basquete universitário como McDonald's All-American (2010) e Mr. New York Basketball (2010), além de ter sido Second-team All-SEC (2011). Na NBA, ele é um jogador consistente, mas sem grandes títulos."
+  }
 };
-
 
 const modal = document.getElementById("cardModal");
 const modalImg = document.getElementById("img01");
