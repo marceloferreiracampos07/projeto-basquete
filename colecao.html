@@ -62,6 +62,12 @@
         <img class="modal-content" id="img01">
         <div class="modal-text right-text" id="rightModalText"></div>
     </div>
+    <div class="centro-btn">
+    <button id="verVideoBtn" style="display: none; margin-top: 10px;">Highlight</button>
+<div id="videoContainer" class="video-container" style="display: none; margin-top: 10px;">
+  <iframe id="youtubeVideo" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
 </div>
 
 <!-- SCRIPTS -->
@@ -70,6 +76,22 @@
 <script src="descricao.js"></script>
 
 <script>
+
+const videos = {
+  "assets/cards/Lendário/Giannis lendario.png": "https://www.youtube.com/embed/7pax4RPQXbY",   
+  "assets/cards/Lendário/kobe bryant lendario.png": "https://www.youtube.com/embed/NWDY-vP5gkI",
+  "assets/cards/Lendário/Lebron James lendario.png":"https://www.youtube.com/embed/awd9l1hKGLs",
+  "assets/cards/Lendário/michael jordan lendario.png":"https://www.youtube.com/embed/rzQAC8kPJxo",
+  "assets/cards/Lendário/stephen curry lendario.png":"https://www.youtube.com/embed/FVhBJQQFCIw",
+  "assets/cards/Épico/Carmelo-epico.png": "https://www.youtube.com/embed/AYa3n0btREw",
+  "assets/cards/Épico/Damian-epica.png": "https://www.youtube.com/embed/WzjoHbUu_2A",
+  "assets/cards/Épico/Harden-epica.png": "https://www.youtube.com/embed/X9GddRiKdXg",
+  "assets/cards/Épico/RayAllen-epica.png": "https://www.youtube.com/embed/b8kEa-L_IDs",
+  "assets/cards/Épico/Steve Nash epica.png": "https://www.youtube.com/embed/v7F3FBZRiaY",
+  "assets/cards/Épico/Tracy McGrady epica.png":"https://www.youtube.com/embed/s4QuUYG6kxI",
+  "assets/cards/Épico/Westbrook-epica.png": "https://www.youtube.com/embed/axfuXEBa-Bo"
+};
+
     // Junta todas as cartas em um único array
     const todasCartas = [...comum, ...raro, ...epico, ...lendario];
     const placeholderImg = "assets/diversos/carta vazia padrao.png"; // Imagem padrão para cartas não obtidas
@@ -122,6 +144,45 @@
             colecaoDiv.appendChild(slot);
         });
     }
+
+    function openCardModal(src, fullSrc) {
+      const modal = document.getElementById('cardModal');
+      const modalImg = document.getElementById('img01');
+      const leftText = document.getElementById('leftModalText');
+      const rightText = document.getElementById('rightModalText');
+      const verVideoBtn = document.getElementById('verVideoBtn');
+      const videoContainer = document.getElementById('videoContainer');
+      const youtubeVideo = document.getElementById('youtubeVideo');
+
+      modal.style.display = "block";
+      modalImg.src = src;
+
+      const desc = cardDescricao[fullSrc] || {};
+      leftText.textContent = desc.leftText || '';
+      rightText.textContent = desc.rightText || '';
+
+      const videoUrl = videos[fullSrc];
+      if (videoUrl) {
+        verVideoBtn.style.display = 'inline-block';
+        videoContainer.style.display = 'none';
+        youtubeVideo.src = '';
+
+        verVideoBtn.onclick = () => {
+          videoContainer.style.display = 'block';
+          youtubeVideo.src = videoUrl;
+          verVideoBtn.style.display = 'none'
+        };
+      } else {
+        verVideoBtn.style.display = 'none';
+        videoContainer.style.display = 'none';
+        youtubeVideo.src = '';
+      }
+    }
+
+    document.querySelector(".closeBtn").onclick = () => {
+      document.getElementById('cardModal').style.display = "none";
+      document.getElementById('youtubeVideo').src = '';
+    };
 
     // Inicialização
     exibircartascolecao(); // Renderiza as cartas
