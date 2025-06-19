@@ -21,19 +21,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
 }
 
-.back-arrow {
-    display: inline-block;
-    margin-bottom: 20px;
-    color: #0a2342; 
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
 
-.back-arrow:hover {
-    color: #ff8c00; 
-}
 
 h1 {
     text-align: center;

@@ -34,14 +34,10 @@
       <ul class="nav-menu" id="navMenu">
         <li><a href="colecao.html" onclick="showLoaderOnNavigate(event, 'colecao.html')">Coleção</a></li>
         <li><a href="sorteio.html" onclick="showLoaderOnNavigate(event, 'sorteio.html')">Abrir Pacote</a></li>
+        <li><a href="#" onclick="toggleTimer()">Desativar Timer</a></li>
       </ul>
     </nav>
   </header>
-
-  <!-- Botão Voltar -->
-  <a href="javascript:history.back()" class="back-arrow" onclick="showLoaderAndGoBack(event)">
-    <i class="bi bi-arrow-return-left">Voltar</i>
-  </a>
 
   <!-- Área principal de sorteio -->
   <div id="sorteio-container">
@@ -56,7 +52,7 @@
     
     <!-- Botões de ação -->
     <div id="botao-container">
-      <button onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
+      <button id="botao-sorteio" onclick="sortearPacoteAndShowLoader()">Abrir Pacote</button>
       <button onclick="exibirColecaoAndShowLoader()">Ver Coleção</button>
     </div>
   </div>
@@ -100,6 +96,98 @@
         window.location.href = 'colecao.html';
       }, 300);
     }
+
+  const TEMPO_ESPERA = 3 * 60 * 60 * 1000; // 3 horas em milissegundos
+  const CHAVE_ULTIMO_SORTEIO = "ultimoSorteio";
+  const botao = document.getElementById("botao-sorteio");
+
+  function verificarDisponibilidadeSorteio() {
+    const agora = Date.now();
+    const ultimoSorteio = localStorage.getItem(CHAVE_ULTIMO_SORTEIO);
+
+    if (ultimoSorteio && agora - parseInt(ultimoSorteio) < TEMPO_ESPERA) {
+      const tempoRestante = TEMPO_ESPERA - (agora - parseInt(ultimoSorteio));
+      desabilitarBotaoTemporariamente(tempoRestante);
+    }
+  }
+
+  function desabilitarBotaoTemporariamente(tempoRestante) {
+    botao.disabled = true;
+    botao.innerText = formatarTempo(tempoRestante);
+
+    const intervalo = setInterval(() => {
+      const novoTempo = parseInt(localStorage.getItem(CHAVE_ULTIMO_SORTEIO));
+      const restante = TEMPO_ESPERA - (Date.now() - novoTempo);
+
+      if (restante <= 0) {
+        clearInterval(intervalo);
+        botao.disabled = false;
+        botao.innerText = "Abrir Pacote";
+      } else {
+        botao.innerText = formatarTempo(restante);
+      }
+    }, 1000);
+  }
+
+  function formatarTempo(ms) {
+    const totalSegundos = Math.floor(ms / 1000);
+    const horas = Math.floor(totalSegundos / 3600);
+    const minutos = Math.floor((totalSegundos % 3600) / 60);
+    const segundos = totalSegundos % 60;
+    return `Espere: ${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+  }
+
+  // Altere a função existente para registrar o tempo
+  function sortearPacoteAndShowLoader() {
+    showLoader();
+    setTimeout(() => {
+      sortearPacote();
+      localStorage.setItem(CHAVE_ULTIMO_SORTEIO, Date.now().toString());
+      hideLoader();
+      verificarDisponibilidadeSorteio(); // Revalida o botão
+    }, 500);
+  }
+
+  const CHAVE_TIMER_ATIVO = "timerSorteioAtivo";
+
+  // Inicializa como ativo se ainda não tiver valor
+  if (localStorage.getItem(CHAVE_TIMER_ATIVO) === null) {
+    localStorage.setItem(CHAVE_TIMER_ATIVO, "true");
+  }
+
+  // Sobrescreve a função para considerar se o timer está ativado
+  function verificarDisponibilidadeSorteio() {
+    const timerAtivo = localStorage.getItem(CHAVE_TIMER_ATIVO) === "true";
+
+    if (!timerAtivo) {
+      botao.disabled = false;
+      botao.innerText = "Abrir Pacote";
+      return;
+    }
+
+    const agora = Date.now();
+    const ultimoSorteio = localStorage.getItem(CHAVE_ULTIMO_SORTEIO);
+
+    if (ultimoSorteio && agora - parseInt(ultimoSorteio) < TEMPO_ESPERA) {
+      const tempoRestante = TEMPO_ESPERA - (agora - parseInt(ultimoSorteio));
+      desabilitarBotaoTemporariamente(tempoRestante);
+    } else {
+      botao.disabled = false;
+      botao.innerText = "Abrir Pacote";
+    }
+  }
+
+  // Alterna a ativação/desativação do timer
+  function toggleTimer() {
+    const ativo = localStorage.getItem(CHAVE_TIMER_ATIVO) === "true";
+    localStorage.setItem(CHAVE_TIMER_ATIVO, (!ativo).toString());
+
+    alert(ativo ? "Timer desativado! Agora você pode abrir pacotes sem espera." : "Timer ativado! Haverá um intervalo de 3 horas entre sorteios.");
+    verificarDisponibilidadeSorteio(); // Atualiza o estado do botão
+  }
+
+  // Executa ao carregar a página
+  document.addEventListener('DOMContentLoaded', verificarDisponibilidadeSorteio);
 
     // Esconde loader quando página carrega
     window.addEventListener('load', hideLoader);
