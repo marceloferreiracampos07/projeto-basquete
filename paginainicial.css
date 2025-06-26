@@ -196,9 +196,55 @@ background: #d9d9d9;
     vertical-align: middle; /* Alinha a imagem verticalmente com o texto "Olá, [Nome]" */
     border: 1px solid #eee; /* Opcional: Adiciona uma borda fina para destacar */
 }
-@media (max-width: 768px) { /* Ajuste o breakpoint conforme o seu CSS responsivo */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px; /* Ajuste para o header fixo */
+    }
+
+    .header-logo {
+        height: 60px; /* Logo menor em telas pequenas */
+    }
+    
+    .nav-menu {
+       top: 80px; /* Ajustar posição do menu dropdown */
+    }
+
+    .barra-superior {
+        font-size: 1.2rem;
+        padding: 15px;
+    }
+    
+    .carrossel-track img {
+        width: 200px; /* Imagens menores no carrossel */
+    }
+
+    .btn, .abrir-pack {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+
     .nav-profile-photo {
-        width: 40px; /* Talvez um pouco maior no menu mobile */
+        width: 40px; /* Foto de perfil um pouco maior para toque */
         height: 40px;
+    }
+    
+    .nav-menu.show-menu {
+      align-items: center; /* Centraliza itens no menu mobile */
+      text-align: center;
+    }
+
+    .nav-menu li {
+      width: 100%;
+      margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .barra-superior {
+        font-size: 1rem;
+    }
+
+    .carrossel-track img {
+        width: 150px; /* Imagens ainda menores para telas muito pequenas */
     }
 }
